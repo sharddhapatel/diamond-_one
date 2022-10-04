@@ -193,7 +193,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $data=App\Models\packet::get(); ?>
+                                        <?php $data=App\Models\lots::get(); ?>
                                         @foreach($data as $ans)
                                         <tr>
                                             <td>{{ $ans->id }}</td>
@@ -224,13 +224,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>{{  round($divided,3)}}</td>
+                                        <td>{{  round($divided,3) }}</td>
                                         <td>{{  round($lenthdivided,3) }}</td>
-                                        <td>{{  round($widthdivided,3)}}</td>
+                                        <td>{{  round($widthdivided ,3)}}</td>
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td>{{  round($sum,3)}}</td>
+                                        <td>{{ round( $sum,3) }}</td>
                                         <td>0.00</td>
                                         <td>0.00</td>
                                     </thead>

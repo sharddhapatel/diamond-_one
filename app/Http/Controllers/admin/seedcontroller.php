@@ -20,6 +20,7 @@ class seedcontroller extends Controller
         $sumdivided=DB::table('packets')->sum('height');
         $count = DB::table('packets')->count();
         $divided=$sumdivided/$count;
+        round($divided,2);
         $sumlenth=DB::table('packets')->sum('length'); 
         $lenthdivided=$sumlenth/$count;
         $sumwidth=DB::table('packets')->sum('width'); 

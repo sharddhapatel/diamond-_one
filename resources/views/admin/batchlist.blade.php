@@ -57,11 +57,14 @@
                     <div class="header-left">
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <form class="search-form" method="get" name="search">
+                                {{ csrf_field()}}
+                                <input class="form-control mr-sm-2" name="search" value="{{ $pro }}" type="text" placeholder="Search ..." aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
+   
+
 
                         <div class="dropdown for-message">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -277,15 +280,15 @@
                     <div class="col-md-2">
                         <h4 class="headerborder1"> Batch / New </h4>
                     </div>
-                    <div class="col-md-8">
+                    {{-- <div class="col-md-8">
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Save </button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Discard </button></a>
-                    </div>
-                    <div class="col-md-2">
+                    </div> --}}
+                    {{-- <div class="col-md-2">
                         <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Confirm</button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Done</button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -303,11 +306,11 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                       
                                             <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> Name</th>
                                             <th>Pcs</th>
                                             <th>Weight(Ct)</th>
-                                            <th>Avg.Weight(Ct)</th>
+                                            <th>Length</th>
                                             <th>Avg.Height(MM)</th>
                                             <th>Start Date</th>
                                             <th>End Date</th>
@@ -315,186 +318,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $data=App\Models\packet::get(); ?>
+                                        @foreach($data as $ans)
                                         <tr>
-                                            <td>1</td>
+                                           
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
+                                                 {{$ans->batch}}
                                                 </label>
                                             </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
+                                            <td>{{$ans->pcs}}</td>
+                                            <td>{{$ans->weight}}</td>
+                                            <td>{{ $ans->length }}</td>
+                                            <td>{{$ans->height}}</td>
+                                            <td></td>
                                             <td></td>
                                             <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>0</td>
-                                            <td>0.00</td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>02/08/2022 11:11:37</td>
-                                            <td></td>
-                                            <td><button type="button" class="btn btn-success btn-sm">Confirm</button></td>
-                                        </tr>
+                                  @endforeach
                                     </tbody>
                                 </table>
                             </div>

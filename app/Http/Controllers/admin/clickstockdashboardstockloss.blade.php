@@ -193,7 +193,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $data=App\Models\packet::get(); ?>
+                                        <?php $data=App\Models\stockloss::get(); ?>
                                         @foreach($data as $ans)
                                         <tr>
                                             <td>{{ $ans->id }}</td>

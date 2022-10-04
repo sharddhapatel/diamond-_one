@@ -13,9 +13,7 @@ class homecontroller extends Controller
    public function assignreceive(){
     return view('admin.assignreceive');
    }
-   public function batchlist(){
-    return view('admin.batchlist');
-   }
+
    public function boil(){
     return view('admin.boil');
    }

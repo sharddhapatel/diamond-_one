@@ -286,10 +286,10 @@
             </div>
          
             <div id="bootstrap-data-table_filter" class="dataTables_filter float-right">
-                <form action="#" method="get" name="search" >
+                {{-- <form action="#" method="get" name="search" >
                     {{ csrf_field()}}
                 <label style="display: inline-flex;" class="mt-2">Search:<input type="search" name="search" value="{{ $pro }}" class="form-control form-control-sm ml-2" placeholder="" aria-controls="bootstrap-data-table"></label>
-            </form>
+            </form> --}}
             </div>
    
 

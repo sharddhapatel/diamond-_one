@@ -140,10 +140,10 @@
                                             <p class="form-control-static mt-2 text-center">Total</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Pcs : 11905</p>
+                                            <p class="form-control-static mt-2 text-center">Pcs : 00</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Weight(ct): 39,948.95</p>
+                                            <p class="form-control-static mt-2 text-center">Weight(ct): 00</p>
                                         </div>
                                     </div>
                                 </form>
@@ -171,7 +171,7 @@
                                 </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('clickstockdashboardstock') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Stock</strong>
@@ -192,7 +192,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('clickstockdashboardchocklate') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Chocolate</strong>
@@ -213,7 +213,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Laser</strong>
@@ -234,7 +234,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('#') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Boiling</strong>
@@ -255,7 +255,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('#') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Polish</strong>
@@ -276,7 +276,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-2">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('clickstockdashboardstockloss') }}">
                                     <div class="card card1">
                                         <div class="card-header cardheader2">
                                             <strong>Stock Loss</strong>
@@ -311,7 +311,7 @@
                         <div class="card">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('#') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Stock Final</strong>
@@ -319,12 +319,12 @@
                                         <div class="card-body card-block">
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group">
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Pcs: 551</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">pw(Ct): 1,059.06</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Pcs: 00</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">pw(Ct): 00</label></div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-6"><label for="hf-password" class=" form-control-label">Weight(Ct): 3,698,94</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Weight % : 4.31</label></div>
+                                                    <div class="col col-md-6"><label for="hf-password" class=" form-control-label">Weight(Ct): 00</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Weight % : 00</label></div>
                                                 </div>
                                             </form>
                                         </div>
@@ -332,7 +332,7 @@
                                     </a>
                                 </div>
                                 <div class="col-lg-6">
-                                    <a href="{{ url('clickstockdashboard') }}">
+                                    <a href="{{ url('#') }}">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
                                             <strong>Total</strong>
@@ -341,11 +341,11 @@
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Pcs:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">12456</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">00</label></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-password" class=" form-control-label">Weight(Ct):</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">855,90,58</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">00</label></div>
                                                 </div>
                                             </form>
                                         </div>

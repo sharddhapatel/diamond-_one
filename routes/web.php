@@ -36,7 +36,6 @@ Route::group(['middleware'=>'admin'],function()
 route::get('assign', [homecontroller::class, 'assign']);
 route::get('assignreceive', [homecontroller::class, 'assignreceive']);
 
-route::get('batchlist', [homecontroller::class, 'batchlist']);
 route::get('boil', [homecontroller::class, 'boil']);
 route::get('boiling1', [homecontroller::class, 'boiling1']);
 route::get('boiling1list', [homecontroller::class, 'boiling1list']);
@@ -199,11 +198,14 @@ route::get('purityremove/{id}',[batchcontroller::class,'purityremove']);
 route::get('createlot', [batchcontroller::class, 'createlot']);
 route::get('clickbatch', [batchcontroller::class, 'clickbatch']);
 route::get('editbatch/{id}',[batchcontroller::class,'editbatch']);
+route::get('batchlist', [batchcontroller::class, 'batchlist']);
 
 //************************* */ stockdasbord ***********************
 route::get('stockdashboard1', [stockdashbordcontroller::class, 'stockdashboard1']);
 route::get('clickstockdashboardseeds', [stockdashbordcontroller::class, 'clickstockdashboardseeds']);
-
+route::get('clickstockdashboardchocklate', [stockdashbordcontroller::class, 'clickstockdashboardchocklate']);
+route::get('clickstockdashboardstockloss', [stockdashbordcontroller::class, 'clickstockdashboardstockloss']);
+route::get('clickstockdashboardstock', [stockdashbordcontroller::class, 'clickstockdashboardstock']);
 
 // *********************seeds **************************************
 

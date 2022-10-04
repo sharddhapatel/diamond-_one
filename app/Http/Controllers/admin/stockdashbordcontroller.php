@@ -17,6 +17,9 @@ class stockdashbordcontroller extends Controller
         $c1 = DB::table("lots")->sum('weight');
         $d = DB::table("stocklosses")->sum('pcs');
         $d1 = DB::table("stocklosses")->sum('weight');
+//    $data=DB::table('packets'),('lots'),('chocolates'),('stocklosses')->sum('pcs');
+// $data=
+        
         return view('admin.stockdashboard1')->with(['a'=>$a,'a1'=>$a1,'b'=>$b,'b1'=>$b1,'c'=>$c,'c1'=>$c1,'d'=>$d,'d1'=>$d1]);
        }
        public function clickstockdashboardseeds(){
@@ -29,5 +32,38 @@ class stockdashbordcontroller extends Controller
         $sumwidth=DB::table('packets')->sum('width'); 
         $widthdivided=$sumlenth/$count;
         return view('admin.clickstockdashboardseeds')->with(['sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided]);
+       }
+       public function clickstockdashboardchocklate(){
+        $sum=DB::table('chocolates')->sum('weight');
+        $sumdivided=DB::table('chocolates')->sum('height');
+        $count = DB::table('chocolates')->count();
+        $divided=$sumdivided/$count;
+        $sumlenth=DB::table('chocolates')->sum('length'); 
+        $lenthdivided=$sumlenth/$count;
+        $sumwidth=DB::table('chocolates')->sum('width'); 
+        $widthdivided=$sumlenth/$count;
+        return view('admin.clickstockdashboardchocklate')->with(['sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided]);
+       }
+       public function clickstockdashboardstockloss(){
+        $sum=DB::table('stocklosses')->sum('weight');
+        $sumdivided=DB::table('stocklosses')->sum('height');
+        $count = DB::table('stocklosses')->count();
+        $divided=$sumdivided/$count;
+        $sumlenth=DB::table('stocklosses')->sum('length'); 
+        $lenthdivided=$sumlenth/$count;
+        $sumwidth=DB::table('stocklosses')->sum('width'); 
+        $widthdivided=$sumlenth/$count;
+        return view('admin.clickstockdashboardstockloss')->with(['sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided]);
+       }
+       public function clickstockdashboardstock(){
+        $sum=DB::table('lots')->sum('weight');
+        $sumdivided=DB::table('lots')->sum('height');
+        $count = DB::table('lots')->count();
+        $divided=$sumdivided/$count;
+        $sumlenth=DB::table('lots')->sum('length'); 
+        $lenthdivided=$sumlenth/$count;
+        $sumwidth=DB::table('lots')->sum('width'); 
+        $widthdivided=$sumlenth/$count;
+        return view('admin.clickstockdashboardstock')->with(['sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided]);
        }
 }

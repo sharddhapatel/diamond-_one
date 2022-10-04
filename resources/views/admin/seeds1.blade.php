@@ -328,10 +328,10 @@
                                     <tr>
                                                                             <td><b>Total</b></td>
                                         <td> </td>
-                                        <td><b>{{ $divided }}</b></td>
-                                        <td><b>{{ $lenthdivided }}</b></td>
-                                        <td><b>{{ $widthdivided }}</b></td>
-                                        <td><b>{{ $sum }}</b></td>
+                                        <td><b>{{ round($divided ,3) }}</b></td>
+                                        <td><b>{{  round($lenthdivided,3) }}</b></td>
+                                        <td><b>{{  round($widthdivided,3) }}</b></td>
+                                        <td><b>{{  round($sum,3) }}</b></td>
                                         
                                   
 
