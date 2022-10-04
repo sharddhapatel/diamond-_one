@@ -19,12 +19,16 @@ class seedcontroller extends Controller
         $sum=DB::table('packets')->sum('weight');
         $sumdivided=DB::table('packets')->sum('height');
         $count = DB::table('packets')->count();
+        if($count == 0){
+            $count = 1;
+        }
         $divided=$sumdivided/$count;
         $sumlenth=DB::table('packets')->sum('length'); 
         $lenthdivided=$sumlenth/$count;
         $sumwidth=DB::table('packets')->sum('width'); 
         $widthdivided=$sumlenth/$count;
         return view('admin.seeds1')->with(['data'=>$data,'sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided]);
+        
        }
        public function insertseeds(Request $request)
        {
