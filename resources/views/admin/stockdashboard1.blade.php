@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -140,10 +140,10 @@
                                             <p class="form-control-static mt-2 text-center">Total</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Pcs : 00</p>
+                                            <p class="form-control-static mt-2 text-center">Pcs : {{ $a+$b+$c+$d }}</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Weight(ct): 00</p>
+                                            <p class="form-control-static mt-2 text-center">Weight(ct): {{ $a1+$b1+$c1+$d1 }}</p>
                                         </div>
                                     </div>
                                 </form>

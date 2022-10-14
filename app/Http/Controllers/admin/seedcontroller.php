@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Packet;
+use App\Models\packet;
 class seedcontroller extends Controller
 {
     // public function seeds1(){
@@ -19,6 +19,9 @@ class seedcontroller extends Controller
         $sum=DB::table('packets')->sum('weight');
         $sumdivided=DB::table('packets')->sum('height');
         $count = DB::table('packets')->count();
+        if($count == 0){
+            $count = 1;
+        }
         $divided=$sumdivided/$count;
         round($divided,2);
         $sumlenth=DB::table('packets')->sum('length'); 
@@ -29,7 +32,7 @@ class seedcontroller extends Controller
        }
        public function insertseeds(Request $request)
        {
-           $seeds1 = new Packet;
+           $seeds1 = new packet;
            $seeds1->batch = $request->get('batch');
            $seeds1->pcs = $request->get('pcs');
            $seeds1->shape = $request->get('shape');
@@ -39,5 +42,8 @@ class seedcontroller extends Controller
            $seeds1->weight = $request->get('weight');
            $seeds1->save();      
         return redirect('seeds1')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
+       }
+       public function seedslist(){
+        return view('admin.seedslist');
        }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Bactch;
-use App\Models\Packet;
+use App\Models\packet;
 
 use App\Models\stockpacket;
 
@@ -16,29 +16,7 @@ use  Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 class pakegecontroller extends Controller
 {
-    
-  
-     
-       public function packets(){
-        $data=DB::table('bactches')->get();
-        return view('admin.packets')->with(['data'=>$data]);;
-       }
-       public function insertstockpackets(Request $request)
-       {
- 
-           $stockpackets = new stockpacket;
-           $stockpackets->batch = $request->get('batch');
-           $stockpackets->pcs = $request->get('pcs');
-           $stockpackets->shape = $request->get('shape');
-           $stockpackets->height = $request->get('height');
-           $stockpackets->length = $request->get('length');
-           $stockpackets->width = $request->get('width');
-           $stockpackets->weight = $request->get('weight');
-           $stockpackets->save();
-      
-        return redirect('packets')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
-       }
- 
+
        public function demo(){ 
         return view('admin.demo');
        }

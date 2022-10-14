@@ -14,12 +14,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="{{URL:: asset('admin/assets/i.imgur.com/QRAUqs9.png')}}">
-    <link rel="shortcut icon" href="{{URL:: asset('admin/assets/i.imgur.com/QRAUqs9.png')}}">
+    <link rel="apple-touch-icon" href="{{URL:: asset('admin/i.imgur.com/QRAUqs9.png')}}">
+    <link rel="shortcut icon" href="{{URL:: asset('admin/i.imgur.com/QRAUqs9.png')}}">
 
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/normalize.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/bootstrap.min.css')}}">
@@ -30,8 +30,11 @@
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/chosen/chosen.min.css')}}">
-
+    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -46,13 +49,15 @@
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
+         
             <div class="top-right">
                 <div class="header-menu">
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+                        {{-- <button class="search-trigger"><i class="fa fa-search"></i></button> --}}
                         <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <form class="search-form" method="get" name="search">
+                                {{ csrf_field()}}
+                                <input class="form-control mr-sm-2" name="search" value="{{ $user }}" type="text" placeholder="Search ..." aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
@@ -198,7 +203,7 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>#</th>
                                             <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> Name</th>
                                             <th>Login</th>
                                             <th>Language</th>
@@ -209,13 +214,13 @@
                                         <?php $data = App\Models\createsettinguser::get(); ?>
                                         @foreach($data as $ans)
                                         <tr>
-                                            <td>{{ $ans->id }}</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     {{ $ans->name }}
                                                 </label>
                                             </td>
-                                            <td>{{ $ans->login }}</td>
+                                            <td>{{ $ans->login }}</td>  
                                             <td>{{ $ans->language}}</td>
                                             <td>{{ $ans->created_at }}</td>
                                         </tr>

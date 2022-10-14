@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -229,8 +229,8 @@
                                         <div class="col-md-4" style="    border-left: 1px solid lightgray;">
                                             <a href="#"> <i class="fa fa-group"></i> <strong>15 Active Users</strong> <i class="fa fa-question-circle pr-1"></i></a>
                                             <br>
-                                            <a href="{{ url('settingusers') }}"> <i class="fa  fa-long-arrow-right mt-3" style="color: #41757a;"></i><span class="mt-2" style="color: #41757a;"> Manage Users</span> </a>
-
+                                            {{-- <a href="{{ url('settingusers') }}"> <i class="fa  fa-long-arrow-right mt-3" style="color: #41757a;"></i><span class="mt-2" style="color: #41757a;"> Manage Users</span> </a> --}}
+                                            <a href="{{ url('/login') }}"> <i class="fa  fa-long-arrow-right mt-3" style="color: #41757a;"></i><span class="mt-2" style="color: #41757a;"> Manage Users</span> </a>
                                         </div>
                                         <div class="col-md-3">
 
@@ -292,7 +292,7 @@
                                                                 
                                                                 <div class="modal-footer float-left">
                                                                     <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
-                                                                    <button type="button" class="btn btn-light">Cancel</button>
+                                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                                                 </div>
                                                             </form>
                                                         </div>

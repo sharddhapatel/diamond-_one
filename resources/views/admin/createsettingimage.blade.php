@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -144,10 +144,10 @@
                     <div class="col-md-2">
                         <h4 class="headerborder1">Image / New</h4>
                     </div>
-                    <div class="col-md-7">
+                    {{-- <div class="col-md-7">
                         <a href=""><button type="button" class="btn btn-outline-info mt-1"> Save </button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Discard </button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

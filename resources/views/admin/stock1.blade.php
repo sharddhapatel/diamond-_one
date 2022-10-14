@@ -15,7 +15,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -182,7 +182,7 @@
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pcs</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" class="form-control"></div>
+                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs"  required placeholder="10" class="form-control"></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
@@ -210,25 +210,25 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
-                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
-                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
-                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
-                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,7 +238,7 @@
                                 </div>
                                 <div class="modal-footer float-left">
                                     <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
-                                    <button type="button" class="btn btn-light">Cancel</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -412,19 +412,20 @@
                         <div class="card">
 
                             <div class="row">
-                               
+                               <?php $data=App\Models\lots::get(); ?>
+                               @foreach($data as $ans)
                                 <div class="col-lg-3">
                                     <a href="{{ url('clickstock') }}">
                                     <div class="card">
                                         <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
+                                            <strong>{{ $ans->batch}}</strong>
                                             <button type="button" class="btn btn-info btn-sm float-right">16</button>
                                         </div>
                                         <div class="card-body card-block">
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group1">
                                                     <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
+                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): {{ $ans->weight }}</label></div>
                                                 </div>
                                                 <div class="row form-group1">
                                                     <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
@@ -436,657 +437,15 @@
                                                 </div>
                                                 <div class="row form-group1">
                                                     <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
+                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: {{ round($ans->length ,3) }}*{{ round($ans->width ,3) }}</label></div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Dashboard</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong>MRG6-LOT329</strong>
-                                            <button type="button" class="btn btn-info btn-sm float-right">16</button>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Location: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 81.59</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"><i class="fa-solid fa-circle"></i>Stock</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Weight(Ct): 5.10</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.Height(Micron): 4.38</label></div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size"></label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Avg.L*W: 9.69*8.10</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                @endforeach
+                               
 
                             </div>
                         </div>

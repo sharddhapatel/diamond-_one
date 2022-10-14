@@ -28,8 +28,11 @@ class settingcontroller extends Controller
       
         return redirect('createsettinguser')->with(['message'=>'insert Setting sucessfull!']);
        }
-       public function settingusers(){
-        return view('admin.settingusers');
+       public function settingusers(Request $request){
+        $requestData = ['name','login','language'];
+        $user = $request->input('search');
+            $data = DB::table('createsettingusers')->where('name', "like", "%" . $request->search. "%")->get();
+        return view('admin.settingusers')->with(['user'=>$user]);
        }
        public function mainsetting(){
         return view('admin.mainsetting');
@@ -43,7 +46,8 @@ class settingcontroller extends Controller
       
         return redirect('mainsetting')->with(['message'=>'insert Language sucessfull!']);
        }
-       public function createsettingcompanies(){
+       public function createsettingcompanies(Request $request){
+ 
         return view('admin.createsettingcompanies');
        }
        public function getdis($id)
@@ -72,8 +76,11 @@ class settingcontroller extends Controller
       
         return redirect('createsettingcompanies')->with(['message'=>'insert Company sucessfull!']);
        }
-       public function settingcompanies(){
-        return view('admin.settingcompanies');
+       public function settingcompanies(Request $request){
+        $requestData = ['name','stat','dist','address','gstno','comregister','currency','phone','mobile','email','website'];
+        $company = $request->input('search');
+            $data = DB::table('companies')->where('name', "like", "%" . $request->search. "%")->get();
+        return view('admin.settingcompanies')->with(['company'=>$company]);
        }
        public function settingbackgroundimage(){
         return view('admin.settingbackgroundimage');
@@ -86,7 +93,6 @@ class settingcontroller extends Controller
  
            $image = new image;
            $image->name = $request->get('name');
-         
            if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
@@ -94,9 +100,7 @@ class settingcontroller extends Controller
             $file->move('item_img', $filename);
             $image->image = $filename;
         }
-        
            $image->save();
-      
         return redirect('createsettingimage')->with(['message'=>'insert Image sucessfull!']);
        }
 }

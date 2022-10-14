@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -129,9 +129,9 @@
 
             <ul class="stockul">
                 <li class="stockli mt-2"><a href="#">All Packets </a></li>
-                <li class="stockli"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#addpacketsModal">Add Packets</a></li>
+                {{-- <li class="stockli"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#addpacketsModal">Add Packets</a></li> --}}
             </ul>
-            <div class="modal fade" id="addpacketsModal" tabindex="-1" aria-labelledby="addpacketsModalLabel" aria-hidden="true">
+            {{-- <div class="modal fade" id="addpacketsModal" tabindex="-1" aria-labelledby="addpacketsModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -217,7 +217,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="content">
             <div class="animated fadeIn">
@@ -247,562 +247,38 @@
                         <div class="card">
 
                             <div class="row">
+                                <?php $data=App\Models\Packet::get(); ?>
+@foreach($data as $ans) 
                                 <div class="col-lg-3">
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
+                                            <strong>{{ $ans->batch }}</strong>
                                             <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
                                         </div>
                                         <div class="card-body card-block">
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
+                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch: {{ $ans->batch }}</label></div>
+                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: {{ $ans->shape }}</label></div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
+                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: {{ $ans->pcs }}</label></div>
+                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): {{ $ans->height }}</label></div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
+                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w:{{round($ans->length,3)}}*{{round($ans->width,3)  }}</label></div>
+                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): {{ $ans->weight }}</label></div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="card card2">
-                                        <div class="card-header cardheader2">
-                                            <strong>APL TRY-P-466</strong>
-                                            <a class=" float-right"><i class="fa-solid fa-receipt"></i></a>
-                                        </div>
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-email" class=" form-control-label font_size">Batch APL TRY: 0</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">shape: sq</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">pcs: 1</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Height(Micron): 0.52</label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-5"><label for="hf-password" class=" form-control-label font_size">L x w: 9.00*8.00</label></div>
-                                                    <div class="col col-md-7"><label for="hf-email" class=" form-control-label font_size">Weight(Ct): 0.57</label></div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                              
 
 
-
+                                @endforeach
                             </div>
+                          
                         </div>
                     </div>
                 </div>

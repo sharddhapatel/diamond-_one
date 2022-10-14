@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -170,7 +170,7 @@
                                                     <div class="col col-md-3"><label for="select" cclass=" form-control-label">Batch</label></div>
                                                     <div class="col-12 col-md-9">
 
-                                                        <select class="custom-select d-block w-100" name="batch"  required="">
+                                                        <select class="custom-select d-block w-100" name="batch" required >
                                                             <option value="0">Please select</option>
                                                             @foreach($data as $ans)
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
@@ -182,7 +182,7 @@
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pcs</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" class="form-control"></div>
+                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" required class="form-control"></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
@@ -190,7 +190,7 @@
                                                         <?php $shape=App\Models\shap::get();?>                                                                   
                                                        
                                                      
-                                                        <select class="custom-select d-block w-100" name="shape" required="">
+                                                        <select class="custom-select d-block w-100" name="shape" required>
                                                             <option value="0">Please select</option>
                                                             @foreach($shape as $ans)
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
@@ -211,25 +211,25 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
-                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="height" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
-                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="length" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
-                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="width" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
-                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="weight" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,7 +239,7 @@
                                 </div>
                                 <div class="modal-footer float-left">
                                     <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
-                                    <button type="button" class="btn btn-light">Cancel</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -293,20 +293,22 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>#</th>
                                             <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> Name</th>
                                             <th>Height(Micron)</th>
                                             <th>Length(MM)</th>
                                             <th>Width(MM)</th>
                                             <th>Weight(Ct)</th>
+                                            <th>Print</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                
-                                        <?php $data=App\Models\Packet::get();?>
+                                        <?php $data=App\Models\packet::get();?>
                                         @foreach ($data as $ans)
                                         <tr>
-                                            <td>{{ $ans->id }}</td>
+                                            
+                                            <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">{{$ans->batch}} </label>
                                             </td>
@@ -317,25 +319,19 @@
                                             <td>{{$ans->weight}}
                                                 {{-- <i class="fa-solid fa-receipt"></i> --}}
                                             </td>
-                                            
-                                           
-                                            
+                                            <td> <button type="button" name="print_packet_label" title="Print Label" context="{'print_from_batch': True}" class="btn btn-link o_icon_button"><i class="fa fa-fw o_button_icon fa-print"></i></button></td>
                                         </tr>
-                                    
                                         @endforeach
                           
                                     </tbody>
                                     <tr>
-                                                                            <td><b>Total</b></td>
+                                        <td><b>Total</b></td>
                                         <td> </td>
                                         <td><b>{{ round($divided ,3) }}</b></td>
                                         <td><b>{{  round($lenthdivided,3) }}</b></td>
                                         <td><b>{{  round($widthdivided,3) }}</b></td>
                                         <td><b>{{  round($sum,3) }}</b></td>
-                                        
-                                  
-
-                                        
+                                        <td><b></b></td>
                                     </tr>
                                 </table>
                             </div>

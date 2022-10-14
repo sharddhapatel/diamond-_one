@@ -318,9 +318,7 @@ class homecontroller extends Controller
      public function seed(){
       return view('admin.seed');
      }
-     public function seedslist(){
-      return view('admin.seedslist');
-     }
+
      public function purchase1table(){
           return view('admin.purchase1table');
          }

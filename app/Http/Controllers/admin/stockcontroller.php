@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\lots;
 use App\Models\stockloss;
 use App\Models\chocolate;
-
+use App\Models\stockpacket;
 use App\Models\location;
 use App\Models\stockmove;
 use App\Models\stockquant;
@@ -173,5 +173,28 @@ class stockcontroller extends Controller
        }
        public function createlocation(){
         return view('admin.createlocation');
+       }
+       public function packets(Request $request){
+        $data=DB::table('bactches')->get();
+        $requestData = ['id', 'name'];
+        $packet = $request->input('search');
+            $datas = DB::table('stockpackets')->where('batch', "like", "%" . $request->search. "%")->get();
+        return view('admin.packets')->with(['data'=>$data,'packet'=>$packet]);;
+       }
+       
+       public function insertstockpackets(Request $request)
+       {
+ 
+           $stockpackets = new stockpacket;
+           $stockpackets->batch = $request->get('batch');
+           $stockpackets->pcs = $request->get('pcs');
+           $stockpackets->shape = $request->get('shape');
+           $stockpackets->height = $request->get('height');
+           $stockpackets->length = $request->get('length');
+           $stockpackets->width = $request->get('width');
+           $stockpackets->weight = $request->get('weight');
+           $stockpackets->save();
+      
+        return redirect('packets')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
        }
 }

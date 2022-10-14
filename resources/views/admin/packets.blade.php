@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,14 +54,14 @@
             <div class="top-right">
                 <div class="header-menu">
                     <div class="header-left">
-                        <button class="search-trigger"><i class="fa fa-search"></i></button>
+
                         <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                            <form class="search-form" method="get" name="search">
+                                {{ csrf_field()}}
+                                <input class="form-control mr-sm-2" name="search" value="{{ $packet }}" type="text" placeholder="Search ..." aria-label="Search">
                                 <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
                             </form>
                         </div>
-
                         <div class="dropdown for-message">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa  fa-comments"></i>
@@ -182,7 +182,7 @@
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pcs</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" class="form-control"></div>
+                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" required placeholder="10" class="form-control"></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
@@ -210,25 +210,25 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
-                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" required  aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
-                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
-                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
-                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,7 +238,7 @@
                                 </div>
                                 <div class="modal-footer float-left">
                                     <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
-                                    <button type="button" class="btn btn-light">Cancel</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -435,124 +435,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $data=App\Models\stockpacket::get(); ?>
+                                        @foreach($data as $ans)
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $loop->iteration  }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
+                                            {{$ans->batch}}
                                                 </label>
                                             </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
+                                            <td>{{ $ans->height }}</td>
+                                            <td>{{ $ans->length }}</td>
+                                            <td>{{ $ans->width }}</td>
+                                            <td>{{ $ans->pcs }}</td>
+                                            <td>{{ $ans->weight }} <i class="fa-solid fa-clock-rotate-left"></i> History</td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                  API TRY P - 463
-                                                </label>
-                                            </td>
-                                            <td>3.95</td>
-                                            <td>9.25</td>
-                                            <td>8.25</td>
-                                            <td>1</td>
-                                            <td>26.77 <i class="fa-solid fa-clock-rotate-left"></i> History</td>
-                                        </tr>
+                          @endforeach
                                     </tbody>
                                 </table>
                             </div>

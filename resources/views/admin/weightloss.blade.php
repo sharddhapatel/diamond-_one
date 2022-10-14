@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -181,7 +181,7 @@
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pcs</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" class="form-control"></div>
+                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" required placeholder="10" class="form-control"></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
@@ -209,25 +209,25 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
-                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
-                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
-                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group1">
                                                         <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
-                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                        <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" required aria-invalid="false" value="00.00">
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,7 +237,7 @@
                                 </div>
                                 <div class="modal-footer float-left">
                                     <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
-                                    <button type="button" class="btn btn-light">Cancel</button>
+                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
                         </div>
@@ -436,8 +436,10 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php $data=App\Models\weightloss::get(); ?>
+                                        @foreach($data as $ans)
                                         <tr>
-                                            <td>1</td>
+                                            <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                  C10-CH675-24[Cutting]
@@ -450,62 +452,7 @@
                                             <td>7.58</td>
                                             <td>14/08/2022 11:35:34</td>
                                         </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                 C10-CH675-24[Cutting]
-                                                </label>
-                                            </td>
-                                            <td>MRG6</td>
-                                            <td>Ankush</td>
-                                            <td>Laser</td>
-                                            <td>5.97</td>
-                                            <td>7.58</td>
-                                            <td>14/08/2022 11:35:34</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                 C10-CH675-24[Cutting]
-                                                </label>
-                                            </td>
-                                            <td>MRG6</td>
-                                            <td>Ankush</td>
-                                            <td>Laser</td>
-                                            <td>5.97</td>
-                                            <td>7.58</td>
-                                            <td>14/08/2022 11:35:34</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                 C10-CH675-24[Cutting]
-                                                </label>
-                                            </td>
-                                            <td>MRG6</td>
-                                            <td>Ankush</td>
-                                            <td>Laser</td>
-                                            <td>5.97</td>
-                                            <td>7.58</td>
-                                            <td>14/08/2022 11:35:34</td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                 C10-CH675-24[Cutting]
-                                                </label>
-                                            </td>
-                                            <td>MRG6</td>
-                                            <td>Ankush</td>
-                                            <td>Laser</td>
-                                            <td>5.97</td>
-                                            <td>7.58</td>
-                                            <td>14/08/2022 11:35:34</td>
-                                        </tr>
+                                       @endforeach
                                     </tbody>
                                 </table>
                             </div>

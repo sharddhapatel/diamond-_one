@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -166,7 +166,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
-                                                    <button type="button" class="btn btn-light">Cancel</button>
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -267,7 +267,7 @@
                             </form>
                         </div>
                         <div class="modal-footer float-left">
-                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -304,7 +304,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
-                                                    <button type="button" class="btn btn-light">Cancel</button>
+                                                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -379,7 +379,7 @@
                             </form>
                         </div>
                         <div class="modal-footer float-left">
-                            <button type="button" class="btn btn-secondary">Cancel</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </div>
                 </div>

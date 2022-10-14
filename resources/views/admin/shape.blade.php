@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -542,7 +542,7 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>#</th>
                                             <th>Name</th>
                                             <th>Delete</th>
                                         </tr>
@@ -551,7 +551,7 @@
                                         <?php $shape = App\Models\shap::get(); ?>
 @foreach($shape as $ans)
                                         <tr>
-                                           <td>{{ $ans->id }}</td>
+                                           <td>{{ $loop->iteration}}</td>
                                              <td> 
                                               {{-- <input class="togglefunction" type="checkbox">  --}}
                                                 <label class="form-check-label toggle_status" > {{ $ans->name }} </label>

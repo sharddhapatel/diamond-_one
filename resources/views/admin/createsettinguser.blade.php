@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -138,7 +138,7 @@
                 </li>
             </ul>
         </div>
-        <div class="content" style="background-color: rgba(0,0,0,.03);">
+        {{-- <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-2">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
@@ -182,11 +182,11 @@
                                                 {{ csrf_field() }}
                                             <div class="col col-md-12"><label class=" form-control-label">Name</label></div>
                                             <div class="col-11">
-                                                <input type="text" placeholder="name" id="email-input" name="name" class="form-control">
+                                                <input type="text" placeholder="name" id="email-input" name="name" required class="form-control">
                                             </div>
                                             <div class="col col-md-12 mt-2"><label class=" form-control-label">Email Address</label></div>
                                             <div class="col-11">
-                                                <input type="text" placeholder="email" id="email-input" name="login" class="form-control">
+                                                <input type="text" placeholder="email" id="email-input" name="login" required class="form-control">
                                             </div><br>
                                             <div class="row form-group">
                                                 <div class="col col-md-12 mt-2"><label class=" form-control-label">Language</label></div>

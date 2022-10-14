@@ -1,5 +1,7 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\admin\homecontroller;
 use App\Http\Controllers\admin\pakegecontroller;
 use function Ramsey\Uuid\v1;
@@ -10,6 +12,8 @@ USE App\Http\Controllers\admin\stockcontroller;
 use App\Http\Controllers\admin\finalstock;
 use App\Http\Controllers\admin\jobworkcontroller;
 use App\Http\Controllers\admin\settingcontroller;
+// use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,18 +24,44 @@ use App\Http\Controllers\admin\settingcontroller;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Auth::routes();
+
+// Route::get('/', 'HomeController@redirectAdmin')->name('index');
+// Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Admin routes
+ */
+// Route::group(['prefix' => 'admin'], function () {
+    // Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
+    // Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);
+    // Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
+    // Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
 
 
+    // // Login Routes
+    // Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');
+    // Route::post('/login/submit', 'Backend\Auth\LoginController@login')->name('admin.login.submit');
+
+    // // Logout Routes
+    // Route::post('/logout/submit', 'Backend\Auth\LoginController@logout')->name('admin.logout.submit');
+
+    // // Forget Password Routes
+    // Route::get('/password/reset', 'Backend\Auth\ForgetPasswordController@showLinkRequestForm')->name('admin.password.request');
+    // Route::post('/password/reset/submit', 'Backend\Auth\ForgetPasswordController@reset')->name('admin.password.update');
+// });
+       
 
 
 route::get('/', [pakegecontroller::class, 'index']);
 route::post('insertlogin', [pakegecontroller::class, 'adminlogin']);
 route::get('logout', [pakegecontroller::class, 'logout']);
 
-Route::group(['middleware'=>'admin'],function()
+Route::group(['middleware'=>'adminside'],function()
 {
 route::get('assign', [homecontroller::class, 'assign']);
 route::get('assignreceive', [homecontroller::class, 'assignreceive']);
@@ -123,7 +153,7 @@ route::get('purchase1', [homecontroller::class, 'purchase1']);
 route::get('stockquantlist', [homecontroller::class, 'stockquantlist']);
 route::get('vendorpricelistkarban', [homecontroller::class, 'vendorpricelistkarban']);
 route::get('vendorpricelists', [homecontroller::class, 'vendorpricelists']);
-route::get('weightlosslist', [homecontroller::class, 'weightlosslist']);
+route::get('list', [homecontroller::class, 'weightlosslist']);
 route::get('stocklist', [homecontroller::class, 'stocklist']);
 route::get('stockmovelist', [homecontroller::class, 'stockmovelist']);
 route::get('settinguserslist', [homecontroller::class, 'settinguserslist']);
@@ -134,7 +164,6 @@ route::get('settingpurchase', [homecontroller::class, 'settingpurchase']);
 route::get('settings1', [homecontroller::class, 'settings1']);
 route::get('receive', [homecontroller::class, 'receive']);
 route::get('seed', [homecontroller::class, 'seed']);
-route::get('seedslist', [homecontroller::class, 'seedslist']);
 route::get('purchase1table', [homecontroller::class, 'purchase1table']);
 route::get('purchase1tableexpand', [homecontroller::class, 'purchase1tableexpand']);
 route::get('purchase1taxes', [homecontroller::class, 'purchase1taxes']);
@@ -164,14 +193,7 @@ route::get('clickfinalpacketkarben', [homecontroller::class, 'clickfinalpacketka
 route::get('clickfinalpacketkarbenlist', [homecontroller::class, 'clickfinalpacketkarbenlist']);
 route::get('clickhistory', [homecontroller::class, 'clickhistory']);
 
-
-
-
-
-
 route::get('demo', [pakegecontroller::class, 'demo']);
-route::get('packets', [pakegecontroller::class, 'packets']);
-route::post('insertstockpackets', [pakegecontroller::class, 'insertstockpackets']);
 
 
 // ***************************batch **************************************
@@ -199,7 +221,6 @@ route::get('createlot', [batchcontroller::class, 'createlot']);
 route::get('clickbatch', [batchcontroller::class, 'clickbatch']);
 route::get('editbatch/{id}',[batchcontroller::class,'editbatch']);
 route::get('batchlist', [batchcontroller::class, 'batchlist']);
-
 //************************* */ stockdasbord ***********************
 route::get('stockdashboard1', [stockdashbordcontroller::class, 'stockdashboard1']);
 route::get('clickstockdashboardseeds', [stockdashbordcontroller::class, 'clickstockdashboardseeds']);
@@ -212,6 +233,8 @@ route::get('clickstockdashboardstock', [stockdashbordcontroller::class, 'clickst
 
 route::get('seeds1', [seedcontroller::class, 'seeds1']);
 route::post('insertseeds', [seedcontroller::class, 'insertseeds']);
+route::get('seedslist', [seedcontroller::class, 'seedslist']);
+
 
 // *************************** STOCK********************************
 route::get('stock1', [stockcontroller::class, 'stock1']);
@@ -232,6 +255,9 @@ route::post('insertstockmove', [stockcontroller::class, 'insertstockmove']);
 route::get('stockquant', [stockcontroller::class, 'stockquant']);
 route::post('insertstockquant', [stockcontroller::class, 'insertstockquant']);
 route::get('createlocation', [stockcontroller::class, 'createlocation']);
+route::get('packets', [stockcontroller::class, 'packets']);
+route::post('insertstockpackets', [stockcontroller::class, 'insertstockpackets']);
+
 
 // *****************************finalstock**************************************
 route::get('finalstock', [finalstock::class, 'finalstock']);
@@ -266,4 +292,24 @@ route::get('jangad', [jobworkcontroller::class, 'jangad']);
 route::get('createJangad', [jobworkcontroller::class, 'createJangad']);
 route::post('insertjangad', [jobworkcontroller::class, 'insertjangad']);
 
+
+
+
+// ****************************************RoleandPermission**********************************************************
+Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
+Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);
+Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
+Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
+
+
+// Login Routes
+Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('/login/submit', 'Backend\Auth\LoginController@login')->name('admin.login.submit');
+
+// Logout Routes
+Route::post('/logout/submit', 'Backend\Auth\LoginController@logout')->name('admin.logout.submit');
+
+// Forget Password Routes
+Route::get('/password/reset', 'Backend\Auth\ForgetPasswordController@showLinkRequestForm')->name('admin.password.request');
+Route::post('/password/reset/submit', 'Backend\Auth\ForgetPasswordController@reset')->name('admin.password.update');
 });

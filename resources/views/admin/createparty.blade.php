@@ -14,7 +14,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Jusco Lab Grown Diamond</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -141,10 +141,10 @@
                     <div class="col-md-2">
                         <h4 class="headerborder1">Party / New</h4>
                     </div>
-                    <div class="col-md-9">
+                    {{-- <div class="col-md-9">
                         <a href=""><button type="button" class="btn btn-outline-info mt-1"> Save </button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Discard </button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -204,7 +204,7 @@
                                             {{ csrf_field() }}
                                         <div class="row form-group mt-2">
                                             <div class="col-10">
-                                                <input type="text" placeholder="party" id="email-input" name="name" class="form-control">
+                                                <input type="text" placeholder="party" id="email-input" required name="name" class="form-control">
                                             </div>
                                         </div>
                                         <div class="row form-group">
