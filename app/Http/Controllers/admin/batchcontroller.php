@@ -150,19 +150,28 @@ class batchcontroller extends Controller
      
               return view('admin.createlot')->with(['data'=>$data,'pro'=>$pro]);
       }
-      public function clickbatch(){
-        return view('admin.clickbatch');
-       }
+    //   public function clickbatch(){
+    //     return view('admin.clickbatch');
+    //    }
 
-       public function editbatch($id)
-       {
-           $data = DB::table('packets')->where('id', $id)->first();
-           return view('admin.clickbatch')->with('data', $data);
-       }
+    //    public function editbatch($id)
+    //    {
+    //        $data = DB::table('packets')->where('id', $id)->first();
+    //        return view('admin.clickbatch')->with('data', $data);
+    //    }
        public function batchlist(Request $request){
         $requestData = ['id', 'name'];
         $pro = $request->input('search');
             $data = DB::table('bactches')->where('name', "like", "%" . $request->search. "%")->get();
         return view('admin.batchlist')->with(['data'=>$data,'pro'=>$pro]);
        }
+       public function getbatch($id)
+       {
+        $pdata = DB::table('bactches')
+        ->join('packets', 'packets.batch_id', '=', 'bactches.id')
+        ->where('bactches.id', $id)
+        ->get();
+           return view('admin.clickbatch')->with(['pdata' => $pdata]);
+       }
+   
     }

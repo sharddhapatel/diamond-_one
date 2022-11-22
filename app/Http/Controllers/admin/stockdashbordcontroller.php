@@ -5,7 +5,6 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
 class stockdashbordcontroller extends Controller
 {
     
@@ -18,8 +17,9 @@ class stockdashbordcontroller extends Controller
         $c1 = DB::table("lots")->sum('weight');
         $d = DB::table("stocklosses")->sum('pcs');
         $d1 = DB::table("stocklosses")->sum('weight');
-
-
+//    $data=DB::table('packets'),('lots'),('chocolates'),('stocklosses')->sum('pcs');
+// $data=
+        
         return view('admin.stockdashboard1')->with(['a'=>$a,'a1'=>$a1,'b'=>$b,'b1'=>$b1,'c'=>$c,'c1'=>$c1,'d'=>$d,'d1'=>$d1]);
        }
        public function clickstockdashboardseeds(){

@@ -192,7 +192,6 @@ route::get('clickjobwork1', [homecontroller::class, 'clickjobwork1']);
 route::get('clickfinalpacketkarben', [homecontroller::class, 'clickfinalpacketkarben']);
 route::get('clickfinalpacketkarbenlist', [homecontroller::class, 'clickfinalpacketkarbenlist']);
 route::get('clickhistory', [homecontroller::class, 'clickhistory']);
-
 route::get('demo', [pakegecontroller::class, 'demo']);
 
 
@@ -218,9 +217,10 @@ route::get('purity', [batchcontroller::class, 'purity']);
 route::post('insertpurity', [batchcontroller::class, 'insertpurity']);
 route::get('purityremove/{id}',[batchcontroller::class,'purityremove']);
 route::get('createlot', [batchcontroller::class, 'createlot']);
-route::get('clickbatch', [batchcontroller::class, 'clickbatch']);
-route::get('editbatch/{id}',[batchcontroller::class,'editbatch']);
+// route::get('clickbatch', [batchcontroller::class, 'clickbatch']);
+// route::get('editbatch/{id}',[batchcontroller::class,'editbatch']);
 route::get('batchlist', [batchcontroller::class, 'batchlist']);
+route::get('getbatch/{id}',[batchcontroller::class,'getbatch']);
 //************************* */ stockdasbord ***********************
 route::get('stockdashboard1', [stockdashbordcontroller::class, 'stockdashboard1']);
 route::get('clickstockdashboardseeds', [stockdashbordcontroller::class, 'clickstockdashboardseeds']);
@@ -230,11 +230,9 @@ route::get('clickstockdashboardstock', [stockdashbordcontroller::class, 'clickst
 
 // *********************seeds **************************************
 
-
 route::get('seeds1', [seedcontroller::class, 'seeds1']);
 route::post('insertseeds', [seedcontroller::class, 'insertseeds']);
 route::get('seedslist', [seedcontroller::class, 'seedslist']);
-
 
 // *************************** STOCK********************************
 route::get('stock1', [stockcontroller::class, 'stock1']);
@@ -247,7 +245,6 @@ route::get('stockloss', [stockcontroller::class, 'stockloss']);
 route::post('insertstockloss', [stockcontroller::class, 'insertstockloss']);
 route::get('chocolate', [stockcontroller::class, 'chocolate']);
 route::post('insertchocolate', [stockcontroller::class, 'insertchocolate']);
-
 route::get('location', [stockcontroller::class, 'location']);
 route::post('insertlocation', [stockcontroller::class, 'insertlocation']);
 route::get('stockmove', [stockcontroller::class, 'stockmove']);
@@ -258,14 +255,11 @@ route::get('createlocation', [stockcontroller::class, 'createlocation']);
 route::get('packets', [stockcontroller::class, 'packets']);
 route::post('insertstockpackets', [stockcontroller::class, 'insertstockpackets']);
 
-
 // *****************************finalstock**************************************
 route::get('finalstock', [finalstock::class, 'finalstock']);
 route::get('batchsequence', [finalstock::class, 'batchsequence']);
 route::post('insertbatchsequence', [finalstock::class, 'insertbatchsequence']);
 route::get('batchsequenceremove/{id}',[finalstock::class,'batchsequenceremove']);
-
-
 
 // ********************************setting***********************************************
 route::get('createsettinguser', [settingcontroller::class, 'createsettinguser']);
@@ -292,15 +286,11 @@ route::get('jangad', [jobworkcontroller::class, 'jangad']);
 route::get('createJangad', [jobworkcontroller::class, 'createJangad']);
 route::post('insertjangad', [jobworkcontroller::class, 'insertjangad']);
 
-
-
-
 // ****************************************RoleandPermission**********************************************************
 Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
 Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);
 Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
 Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
-
 
 // Login Routes
 Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');

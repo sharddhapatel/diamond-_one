@@ -142,7 +142,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="mx-auto d-block">
-                                    <a href="{{ url('growing') }}"><i class="fa-solid fa-chart-line"></i></a>
+                                    <a href="{{ url('chocolatedashboard') }}"><i class="fa-solid fa-chart-line"></i></a>
                                     <h5 class="text-sm-center mt-2 mb-1">Growing</h5>
                                     <div class="location text-sm-center">Department</div>
                                 </div>

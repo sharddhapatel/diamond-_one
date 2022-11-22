@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Models\Bactch;
-use App\Models\packet;
+use App\Models\Packet;
 
 use App\Models\stockpacket;
 

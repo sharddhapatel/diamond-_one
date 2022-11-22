@@ -511,7 +511,6 @@
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
         <script src="{{URL:: asset('admin/assets/js/main.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}}"></script>
 

@@ -10,6 +10,6 @@ class packet extends Model
     use HasFactory;
     public $table = 'packets';
     protected $fillable = [
-        'batch','pcs','shape','height','length','width','weight'
+        'batch_id','pcs','shape','height','length','width','weight'
     ];
 }

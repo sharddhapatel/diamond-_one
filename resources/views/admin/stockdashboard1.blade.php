@@ -140,10 +140,10 @@
                                             <p class="form-control-static mt-2 text-center">Total</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Pcs : {{ $a+$b+$c+$d }}</p>
+                                            <p class="form-control-static mt-2 text-center">Pcs : 00</p>
                                         </div>
                                         <div class="col-12 col-md-4">
-                                            <p class="form-control-static mt-2 text-center">Weight(ct): {{ $a1+$b1+$c1+$d1 }}</p>
+                                            <p class="form-control-static mt-2 text-center">Weight(ct): 00</p>
                                         </div>
                                     </div>
                                 </form>

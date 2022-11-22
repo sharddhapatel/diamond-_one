@@ -71,8 +71,6 @@
                     <div class="header-left">
                         {{-- <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
-             
-                            
                         </div>  --}}
 
                         
@@ -540,18 +538,23 @@
                         <div class="card">
 
                             <div class="row">
-                                <?php $data = App\Models\packet::get(); ?>
+                                <?php $data = App\Models\Bactch::get(); ?>
                                 @foreach($data as $ans)
                                 <div class="col-lg-3">
-                           <a href="{{ url('clickbatch') }}">
+                        
                                     <div class="card card2">
                                         <div class="card-header cardheader2">
-                                            <strong>{{ $ans->batch }}</strong>
+                                            <strong>{{ $ans->name }}</strong>
                                             {{-- <button type="button" class="btn btn-success btn-sm float-right">Confirm</button> --}}
-                                            <td><button type="submit" class="btn btn-success btn-sm float-right"><a href="editbatch/{{$ans->id}}">View</a> </button></td>
-                                        
+                                            {{-- 
+                                                <td><button type="submit" class="btn btn-success btn-sm float-right"><a href="editbatch/{{$ans->id}}">View</a> </button></td> --}}
+                                                <td>
+                                                    <button type="submit" class="btn btn-success btn-sm float-right">
+                                                    <a href="{{url('getbatch')}}/{{$ans->id}}">View</a></button>
+                                                       
                                         </div>
-                                        <div class="card-body card-block">
+                                     
+                                        {{-- <div class="card-body card-block">
                                  
 
                                             <form action="#" method="post" class="form-horizontal">
@@ -567,15 +570,20 @@
                                                
                                             </form>
                                             {{-- <div id="timer">Hello</div>
-                                            <button id="start">Start</button> 
-                                      --}}
-                                        </div>
-                                    </div>
-                                </a>
+                                            <button id="start">Start</button>--}}
+                                        {{-- </div>  --}}
+                                                                        </div>
+                               
                                 </div>
                                
                                 @endforeach
-                         
+                                <ul>
+                                    <?php $data = \App\Models\Bactch::get(); ?>
+                                    @foreach($data as $cat)
+            
+                                    <li><a href="{{url('getbatch')}}/{{$cat->id}}">{{$cat->name}}</a>
+                                        @endforeach
+                                </ul>
 
                             </div>
                         </div>

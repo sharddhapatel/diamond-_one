@@ -173,7 +173,7 @@
                                                         <select class="custom-select d-block w-100" name="batch" required >
                                                             <option value="0">Please select</option>
                                                             @foreach($data as $ans)
-                                                            <option value="{{ $ans->name }}">{{ $ans->name }}</option>
+                                                            <option value="{{ $ans->id }}">{{ $ans->name }}</option>
                                                             @endforeach
 
                                                         </select>
@@ -307,11 +307,12 @@
                                         <?php $data=App\Models\packet::get();?>
                                         @foreach ($data as $ans)
                                         <tr>
-                                            
                                             <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->batch}} </label>
+                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->batch_id}} </label>
                                             </td>
+
+                                    
                                             <td>{{$ans->height}}</td>
                                             <td>{{$ans->length}}</td>
                                             <td> {{$ans->width}}</td>

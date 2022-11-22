@@ -15,7 +15,8 @@ class CreatePacketsTable extends Migration
     {
         Schema::create('packets', function (Blueprint $table) {
             $table->id();
-            $table->string('batch')->nullable();
+            $table->unsignedInteger('batch_id')->nullable();
+          
             $table->string('pcs')->nullable();
             $table->string('shape')->nullable();
             $table->string('height')->nullable();

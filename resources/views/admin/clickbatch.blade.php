@@ -18,8 +18,8 @@
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="{{URL:: asset('admin/i.imgur.com/QRAUqs9.png')}}">
-    <link rel="shortcut icon" href="{{URL:: asset('admin/i.imgur.com/QRAUqs9.png')}}">
+    <link rel="apple-touch-icon" href="{{URL:: asset('admin/assets/i.imgur.com/QRAUqs9.png')}}">
+    <link rel="shortcut icon" href="{{URL:: asset('admin/assets/i.imgur.com/QRAUqs9.png')}}">
 
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/normalize.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/bootstrap.min.css')}}">
@@ -35,6 +35,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
+    <style>
+        .navbar-nav li:hover>ul.dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu>.dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+        }
+        /* rotate caret on hover */
+
+        .dropdown-menu>li>a:hover:after {
+            text-decoration: underline;
+            transform: rotate(-90deg);
+        }
+    </style>
 </head>
 
 <body>
@@ -113,9 +134,9 @@
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="#"><i class="fa fa-user"></i>My Profile</a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notifications <span class="count">13</span></a>
+                            {{-- <a class="nav-link" href="#"><i class="fa fa-bell-o"></i>Notifications <span class="count">13</span></a>
 
-                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>
+                            <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a> --}}
 
                             <a class="nav-link" href="{{ url('logout') }}"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
@@ -124,508 +145,33 @@
             </div>
         </header>
 
-        <div class="card-header">
-            <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('createlot') }}">Batch</a></strong>
-
-            <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createlot') }}">Batch</a></li>
-                <li class="stockli"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#addpacketsModal">Create Lots</a></li>
-                <li class="stockli nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Configuration
-                    </a>
-                    <ul class="dropdown-menu mt6" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{{ url('shape') }}">Shape</a></li>
-                        <li><a class="dropdown-item" href="{{ url('lotprocess') }}">Lot Process</a></li>
-                        <li><a class="dropdown-item" href="{{ url('process&reson') }}">Process & Reason</a></li>
-                        <li><a class="dropdown-item" href="{{ url('finishtype') }}">Finish Type</a></li>
-                        <li><a class="dropdown-item" href="{{ url('color') }}">Color</a></li>
-                        <li><a class="dropdown-item" href="{{ url('purity') }}">Purity</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <div class="modal fade" id="addpacketsModal" tabindex="-1" aria-labelledby="addpacketsModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="addpacketsModalLabel">Create Lot</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-9">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"><label for="select" class=" form-control-label">Batch</label></div>
-                                                    <div class="col-12 col-md-6">
-                                                        <select class="custom-select d-block w-100" required="">
-                                                            <option value="0">Please select</option>
-                                                            <option value="1">SQ</option>
-                                                            <option value="2">Option #2</option>
-                                                            <option value="3">Option #3</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"><label class=" form-control-label">Print</label></div>
-                                                    <div class="col col-md-6">
-                                                        <div class="form-check-inline form-check">
-                                                            <label for="inline-radio1" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio1" name="inline-radios" value="option1" class="form-check-input" checked>Lot
-                                                            </label>
-                                                            <label for="inline-radio2" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio2" name="inline-radios" value="option2" class="form-check-input">Packet
-                                                            </label>
-                                                            <label for="inline-radio3" class="form-check-label ">
-                                                                <input type="radio" id="inline-radio3" name="inline-radios" value="option3" class="form-check-input">Both
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-3">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"></div>
-                                                    <div class="col col-md-9"><label class=" form-control-label"><img src="{{URL:: asset('admin/assets/img/barcode.webp')}}" alt=""></label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"><label class=" form-control-label"></label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"><input type="email" id="email-input" name="email-input" class="form-control"></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Add Packets</a>
-                                                    </li>
-
-                                                </ul>
-                                                <div class="tab-content pl-3 p-1" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="card-body">
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th scope="col">#. Name</th>
-                                                                                <th scope="col">Height(Micro)</th>
-                                                                                <th scope="col">Length(MM)..</th>
-                                                                                <th scope="col">Width(MM)</th>
-                                                                                <th scope="col">Shape</th>
-                                                                                <th scope="col">Pcs</th>
-                                                                                <th scope="col">Weight(Ct)</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <th scope="row"></th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer float-left">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Create</button>
-                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                        </div>
+        <div class="content">
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h4 class="headerborder1"> Packets </h4>
                     </div>
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-4"></div>
                 </div>
             </div>
         </div>
-
-        {{-- <div class="content" style="background-color: rgba(0,0,0,.03);">
+        <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-md-2">
-                        <h4 class="headerborder1"> Batch / New </h4>
+                    <div class="col-md-4 float-left">
+                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> <i class="fa-solid fa-download"></i> </button></a>
                     </div>
-                    <div class="col-md-8">
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Save </button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Discard </button></a>
+                    <div class="col-md-7">
+                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-filter"></i> Filter</button></a>
+                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-keyboard"></i> Group By</button></a>
+                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-star"></i> Favorites</button></a>
                     </div>
-                    <div class="col-md-2">
-                        <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Confirm</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Done</button></a>
+                    <div class="col-md-1 float-right">
+                        <a href="{{ url('seeds1') }}"><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-list"></i></button></a>
+                        <a href="{{ url('seedslist') }}"><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-arrows-to-dot"></i></button></a>
                     </div>
-                </div>
-            </div>
-        </div> --}}
-        <div class="content" style="background-color: rgba(0,0,0,.03);">
-            <div class="animated fadeIn">
-                <div class="row">
-
-                    {{-- <div class="col-md-1">
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Edit </button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Create </button></a>
-                    </div> --}}
-                    <div class="col-md-9">
-                        <a href="{{ url('batch1') }}"><button type="button" class="btn btn-outline-secondary mt-1"> Create Lot </button></a>
-                        <button type="button" class="btn btn-outline-secondary mt-1" data-bs-toggle="modal" data-bs-target="#addpacket">Add Packet </button>
-                        <button type="button" class="btn btn-outline-secondary mt-1" data-bs-toggle="modal" data-bs-target="#start">Start</button>
-                        <div class="modal fade" id="growingdone" tabindex="-1" aria-labelledby="growingdoneLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="growingdoneLabel">Change Machine</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="card-body card-block">
-                                                        
-            
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" class=" form-control-label">Process &amp; Reason :</label></div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <select class="custom-select d-block w-100" required="">
-                                                                        <option value="0">Please select</option>
-                                                                        <option value="">abc</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" class=" form-control-label">Employee :</label></div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <select class="custom-select d-block w-100" required="">
-                                                                        <option value="0">Please select</option>
-                                                                        <option value="">abc</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" class=" form-control-label">Growing Time :</label></div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <input id="cc-name" name="name" type="text" class="form-control cc-name valid" required="" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name" placeholder="00.00">
-                                                                </div>
-                                                            </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="card-body card-block">
-                                                        <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" class=" form-control-label">Image :</label></div>
-                                                                <div class="col-12 col-md-6">
-                                                                    <input type="file" id="file-input" name="file-input" class="form-control-file">
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div></form>
-                                        
-                                    </div>
-                                    <div class="modal-footer float-left">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Done</button>
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Discard</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="addpacket" tabindex="-1" aria-labelledby="addpacketLabel" aria-modal="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="addpacketLabel">Default Value for Packet</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="http://localhost:8000/insertseeds" method="post" enctype="multipart/form-data">
-                                            <input type="hidden" name="_token" value="YKzEerCDPQZ53AmfK2BocTGC1ghg8JK4By67tQ7n">
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="card-body card-block">
-                                                        
-            
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" cclass=" form-control-label">Packet Pcs :</label></div>
-                                                                <div class="col-12 col-md-9">
-                                                                    <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
-                                                                </div>
-                                                            </div>
-                                                         
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
-                                                                <div class="col-12 col-md-9">
-                                                                                                                                       
-                                                                   
-                                                                 
-                                                                    <select class="custom-select d-block w-100" name="shape" required="">
-                                                                        <option value="0">Please select</option>
-                                                                                                                                    <option value="round">round</option>
-                                                                                                                                    <option value="sqare">sqare</option>
-                                                                                                                                    <option value="circle">circle</option>
-                                                                                                                                </select>
-                                                                  
-                                                                </div>
-                                                            </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-            
-                                                    <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-3">
-                                                                <div class="form-group1">
-                                                                    <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
-                                                                    <input id="cc-payment" name="height" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <div class="form-group1">
-                                                                    <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
-                                                                    <input id="cc-payment" name="length" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <div class="form-group1">
-                                                                    <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
-                                                                    <input id="cc-payment" name="width" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <div class="form-group1">
-                                                                    <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
-                                                                    <input id="cc-payment" name="weight" type="text" class="form-control" aria-required="true" aria-invalid="false" value="00.00">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-            
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer float-left">
-                                                <button type="submit" class="btn btn-secondary ajaxSubmit">Add</button>
-                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                            </div>
-                                        </form>
-                                    </div>
-            
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal fade" id="start" tabindex="-1" aria-labelledby="startLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="startLabel">Confirmation</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="card-body card-block">
-                                                        
-                                                            <div class="row form-group">
-                                                                <div class="col col-md-12"><label class=" form-control-label">Are you sure you want to start this batch ?</label></div>
-                                                            </div>
-                                                        
-                                                    </div>
-                                                </div>
-                                            </div></form>
-                                        
-                                    </div>
-                                    <div class="modal-footer float-left">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>
-                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                 
-                    <div class="col-md-2">
-                        <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Confirm</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Done</button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content" style="background-color: rgba(0,0,0,.03);">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-lg-2"></div>
-                    <div class="col-lg-8 mt-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4> <i class="fa-solid fa-pen-to-square"></i> Packets </h4>
-                            </div>
-                            <div class="card-body">
-                                <form action=# method="post" enctype="multipart/form-data">
-                                    {{ csrf_field() }}
-                                   
-                                    <input type="hidden" name="id" id="id" value="{{$data->id}}">
-                                <div class="col col-md-12">
-                                    <h1>{{ $data->batch }}</h1>
-                                    {{-- <input id="cc-name" name="name" type="text" class="form-control cc-name valid" required data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name" placeholder="New"> --}}
-
-                                </div>
-                                {{-- <div class="col-md-8">
-                                    <a href=""><button type="submit" class="btn btn-outline-secondary mt-1"> Save </button></a>
-                                </div> --}}
-                            </form>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Pcs : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">{{ $data->pcs }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Weight(Ct) : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">{{ $data->weight }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Avg.width(Ct) : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">{{ $data->width }}</p>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Avg.Height(MM) : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">{{ $data->height }}</p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"><label class=" form-control-label">Merge Batch : </label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Lot Details</a>
-                                    </li>
-
-                                </ul>
-                                <div class="tab-content pl-3 p-1" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="card-body">
-                                                    <table class="table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th scope="col"># Lot Number</th>
-                                                                <th scope="col">Location</th>
-                                                                <th scope="col">Pcs</th>
-                                                                <th scope="col">Weight(Ct)</th>
-                                                                <th scope="col">Avg.Weight</th>
-                                                                <th scope="col">Avg.Length</th>
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <th scope="row"></th>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                            </tr>
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2"></div>
-                </div>
-            </div>
-        </div>
-        <!-- /header -->
-        <!-- Header-->
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-md-2"></div>
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Send Message <span class="profilespan">Log Note</span></h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#"><i class="fa-solid fa-paperclip"></i> 0</a></li>
-                                    <li><a href="#">Follow</a></li>
-                                    <li class="active"><i class="fa-solid fa-user"></i> 1</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
                 </div>
             </div>
         </div>
@@ -633,75 +179,108 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <h6 class="headerborder">Today</h6>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 col-xs-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <aside class="profile-nav alt">
-                                    <section class="card">
-                                        <div class="card-header user-header alt">
-                                            <div class="media">
-                                                <a href="#">
-                                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{URL:: asset('admin/assets/images/admin.jpg')}}">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h2 class="text-dark display-6">Administrator</h2>
-                                                    <p>Creating a new Record....</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </aside>
-                            </div>
 
-                            <div class="col-md-12">
-                                <aside class="profile-nav alt">
-                                    <section class="card">
-                                        <div class="card-header user-header alt">
-                                            <div class="media">
-                                                <a href="#">
-                                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{URL:: asset('admin/assets/images/admin.jpg')}}">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h2 class="text-dark display-6">DineshB</h2>
-                                                    <p>9 Hours ago</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item listgroupitem">
-                                                <a href="#">Stock Lot Created <i class="fa-solid fa-arrow-right"></i> Received</a>
-                                            </li>
-                                        </ul>
-                                    </section>
-                                </aside>
+                    <div class="col-md-12">
+                        <div class="card">
+                            {{-- <div class="card-header">
+                                <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Print Labels </button></a>
+                                <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Split/Merge Lot </button></a>
+                            </div> --}}
+                            <div class="card-body">
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> Name</th>
+                                            <th>Height(Micron)</th>
+                                            <th>Length(MM)</th>
+                                            <th>Width(MM)</th>
+                                            <th>Weight(Ct)</th>
+                                            <th>Print</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+               
+                                        <?php $data=App\Models\packet::get();?>
+                                        @foreach ($data as $ans)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->batch_id}} </label>
+                                            </td>
+                                            <td>{{$ans->height}}</td>
+                                            <td>{{$ans->length}}</td>
+                                            <td> {{$ans->width}}</td>
+                                           
+                                            <td>{{$ans->weight}}
+                                                {{-- <i class="fa-solid fa-receipt"></i> --}}
+                                            </td>
+                                            <td> <button type="button" name="print_packet_label" title="Print Label" context="{'print_from_batch': True}" class="btn btn-link o_icon_button"><i class="fa fa-fw o_button_icon fa-print"></i></button></td>
+                                        </tr>
+                                        @endforeach
+                          
+                                    </tbody>
+                                    {{-- <tr>
+                                        <td><b>Total</b></td>
+                                        <td> </td>
+                                        <td><b>{{ round($divided ,3) }}</b></td>
+                                        <td><b>{{  round($lenthdivided,3) }}</b></td>
+                                        <td><b>{{  round($widthdivided,3) }}</b></td>
+                                        <td><b>{{  round($sum,3) }}</b></td>
+                                        <td><b></b></td>
+                                    </tr> --}}
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-2"></div>
 
 
                 </div>
-
             </div>
-
         </div>
-        <!-- /#right-panel -->
+
 
         <!-- Right Panel -->
 
         <!-- Scripts -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+  </script>
+  <script>
+        //    jQuery(document).ready(function(){
+        //       jQuery('#ajaxSubmit').click(function(e){
+        //          e.preventDefault();
+        //          $.ajaxSetup({
+        //             headers: {
+        //                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        //             }
+        //         });
+        //          jQuery.ajax({
+        //             url: "{{ url('insertseeds') }}",
+        //             method: 'post',
+        //             data: {
+        //                batch: jQuery('#batch').val(),
+        //             //    alert('batch');
+        //                pcs: jQuery('#pcs').val(),
+        //                shape: jQuery('#shape').val()
+        //                height: jQuery('#height').val()
+        //                length: jQuery('#length').val()
+        //                width: jQuery('#width').val()
+        //                weight: jQuery('#weight').val()
+
+        //             },
+        //             success: function(result){
+        //                console.log(result);
+        //             }});
+        //          });
+        //       });
+  </script>
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
-        <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}} "></script>
-        <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}}"></script>
-        <script src="{{URL:: asset('admin/assets/cdn/js/matchHeight.min.js')}}"></script>
+        <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
+        <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}} "></script>
+        <script src="{{URL:: asset('admin/assets/cdn/js/matchHeight.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/datatables.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
@@ -712,9 +291,10 @@
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
-        <script src="{{URL:: asset('admin/assets/js/main.js')}}"></script>
-        <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}}"></script>
+        <script src="{{URL:: asset('admin/assets/js/main.js')}} "></script>
+        <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
         <script>
             jQuery(document).ready(function() {
@@ -730,8 +310,6 @@
                 $('#bootstrap-data-table-export').DataTable();
             });
         </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
 </body>
 
 <!-- Mirrored from technext.github.io/elaadmin/forms-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Aug 2022 04:21:40 GMT -->
