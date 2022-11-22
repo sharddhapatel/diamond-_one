@@ -5,7 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Packet;
+use App\Models\packet;
 class seedcontroller extends Controller
 {
     // public function seeds1(){
@@ -33,7 +33,7 @@ class seedcontroller extends Controller
        }
        public function insertseeds(Request $request)
        {
-           $seeds1 = new Packet;
+           $seeds1 = new packet;
            $seeds1->batch_id = $request->get('batch');
            $seeds1->pcs = $request->get('pcs');
            $seeds1->shape = $request->get('shape');
