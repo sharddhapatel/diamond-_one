@@ -577,14 +577,7 @@
                                 </div>
                                
                                 @endforeach
-                                <ul>
-                                    <?php $data = \App\Models\Bactch::get(); ?>
-                                    @foreach($data as $cat)
-            
-                                    <li><a href="{{url('getbatch')}}/{{$cat->id}}">{{$cat->name}}</a>
-                                        @endforeach
-                                </ul>
-
+                              
                             </div>
                         </div>
                     </div>

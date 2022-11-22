@@ -201,12 +201,12 @@
                                     </thead>
                                     <tbody>
                
-                                        <?php $data=App\Models\packet::get();?>
-                                        @foreach ($data as $ans)
+                                      
+                                        @foreach ($pdata as $ans)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->batch_id}} </label>
+                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->name}} </label>
                                             </td>
                                             <td>{{$ans->height}}</td>
                                             <td>{{$ans->length}}</td>

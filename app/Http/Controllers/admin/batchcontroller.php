@@ -171,7 +171,7 @@ class batchcontroller extends Controller
         ->join('packets', 'packets.batch_id', '=', 'bactches.id')
         ->where('bactches.id', $id)
         ->get();
-           return view('admin.clickbatch')->with(['pdata' => $pdata]);
+         return view('admin.clickbatch')->with(['pdata' => $pdata]);
        }
    
     }
