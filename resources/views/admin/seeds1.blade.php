@@ -170,7 +170,7 @@
                                                     <div class="col col-md-3"><label for="select" cclass=" form-control-label">Batch</label></div>
                                                     <div class="col-12 col-md-9">
 
-                                                        <select class="custom-select d-block w-100" name="batch" required >
+                                                        <select class="custom-select d-block w-100" name="batch_id" required >
                                                             <option value="0">Please select</option>
                                                             @foreach($data as $ans)
                                                             <option value="{{ $ans->id }}">{{ $ans->name }}</option>
@@ -181,8 +181,25 @@
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-3"><label for="email-input" class=" form-control-label">Pcs</label></div>
-                                                    <div class="col-12 col-md-9"><input type="text" id="email-input" name="pcs" placeholder="10" required class="form-control"></div>
+                                                    <div class="col col-md-3"><label for="select" cclass=" form-control-label">Pcs</label></div>
+                                                    <div class="col-12 col-md-9" >
+
+                                                        <select class="custom-select d-block w-100" id="experienceNo" name="pcs" required >
+                                                            <option value="0">Please select</option> 
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>   
+                                                            <option value="6">6</option>
+                                                            <option value="7">7</option>
+                                                            <option value="8">8</option>
+                                                            <option value="9">9</option>
+                                                            <option value="10">10</option>
+
+                                                        </select>
+
+                                                    </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-3"><label for="select" class=" form-control-label">Shape</label></div>
@@ -203,7 +220,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <div class="col-lg-12">
 
                                         <div class="card-body">
@@ -235,6 +252,38 @@
                                             </div>
                                         </div>
 
+                                    </div>
+                                </div> --}}
+                                <div class="row" id="experienceSection">
+                                    <div class="col-lg-12">
+                                        <div class="card-body" id='outputArea'>
+                                            <div class="row" style="display: none">
+                                                <div class="col-md-3">
+                                                    <div class="form-group1">
+                                                        <label for="cc-payment" class="control-label mb-1">Height(Micron)</label>
+                                                        <input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group1">
+                                                        <label for="cc-payment" class="control-label mb-1">Length(MM)</label>
+                                                        <input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group1">
+                                                        <label for="cc-payment" class="control-label mb-1">Width(MM)</label>
+                                                        <input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group1">
+                                                        <label for="cc-payment" class="control-label mb-1">Weight(Ct)</label>
+                                                        <input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer float-left">
@@ -304,15 +353,13 @@
                                     </thead>
                                     <tbody>
                
-                                        <?php $data=App\Models\packet::get();?>
-                                        @foreach ($data as $ans)
+                                        
+                                        @foreach ($samedata as $ans)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->batch_id}} </label>
+                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->name}} </label>
                                             </td>
-
-                                    
                                             <td>{{$ans->height}}</td>
                                             <td>{{$ans->length}}</td>
                                             <td> {{$ans->width}}</td>
@@ -415,6 +462,27 @@
                 $('#bootstrap-data-table-export').DataTable();
             });
         </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+        </script>
+        <script>
+        $(document).ready(function(){
+           $("#experienceNo").on("change",function(){
+           var numInputs = $(this).val();
+           $('#experienceSection').html('');
+           
+           for(var i=0; i < numInputs; i++)
+           {
+               var j = i*1;
+               var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Height(Micron)</label><input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Length(MM)</label><input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Width(MM)</label><input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Weight(Ct)</label><input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
+               $('#experienceSection').append($section);
+           }
+         });
+       });
+      </script>
 </body>
 
 <!-- Mirrored from technext.github.io/elaadmin/forms-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Aug 2022 04:21:40 GMT -->
