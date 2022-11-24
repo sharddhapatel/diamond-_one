@@ -220,7 +220,7 @@
                                         @endforeach
                           
                                     </tbody>
-                                    {{-- <tr>
+                                    <tr>
                                         <td><b>Total</b></td>
                                         <td> </td>
                                         <td><b>{{ round($divided ,3) }}</b></td>
@@ -228,7 +228,7 @@
                                         <td><b>{{  round($widthdivided,3) }}</b></td>
                                         <td><b>{{  round($sum,3) }}</b></td>
                                         <td><b></b></td>
-                                    </tr> --}}
+                                    </tr>
                                 </table>
                             </div>
                         </div>

@@ -171,8 +171,21 @@ class batchcontroller extends Controller
         ->join('packets', 'packets.batch_id', '=', 'bactches.id')
         ->where('bactches.id', $id)
         ->get();
-       
-         return view('admin.clickbatch')->with(['pdata' => $pdata]);
+        $data=DB::table('bactches')->get();
+        $sum=DB::table('packets')->sum('weight');
+        $sumdivided=DB::table('packets')->sum('height');
+ 
+        $count = DB::table('packets')->count();
+        if($count == 0){
+            $count = 1;
+        }
+        $divided=$sumdivided/$count;
+        round($divided,2);
+        $sumlenth=DB::table('packets')->sum('length'); 
+        $lenthdivided=$sumlenth/$count;
+        $sumwidth=DB::table('packets')->sum('width'); 
+        $widthdivided=$sumlenth/$count;
+         return view('admin.clickbatch')->with(['pdata' => $pdata,'data'=>$data,'sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided,]);
        }
      
 
