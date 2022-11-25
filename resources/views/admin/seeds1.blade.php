@@ -287,7 +287,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer float-left">
-                                    <button type="submit" class="btn btn-secondary ajaxSubmit"  >Create</button>
+                                    <button type="submit" onclick="return confirm('Are you sure enter data correct?')" class="btn btn-secondary ajaxSubmit"  >Create</button>
                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
                                 </div>
                             </form>
@@ -400,35 +400,6 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
   </script>
-  <script>
-        //    jQuery(document).ready(function(){
-        //       jQuery('#ajaxSubmit').click(function(e){
-        //          e.preventDefault();
-        //          $.ajaxSetup({
-        //             headers: {
-        //                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        //             }
-        //         });
-        //          jQuery.ajax({
-        //             url: "{{ url('insertseeds') }}",
-        //             method: 'post',
-        //             data: {
-        //                batch: jQuery('#batch').val(),
-        //             //    alert('batch');
-        //                pcs: jQuery('#pcs').val(),
-        //                shape: jQuery('#shape').val()
-        //                height: jQuery('#height').val()
-        //                length: jQuery('#length').val()
-        //                width: jQuery('#width').val()
-        //                weight: jQuery('#weight').val()
-
-        //             },
-        //             success: function(result){
-        //                console.log(result);
-        //             }});
-        //          });
-        //       });
-  </script>
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}} "></script>
@@ -476,8 +447,8 @@
            
            for(var i=0; i < numInputs; i++)
            {
-               var j = i*1;
-               var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Height(Micron)</label><input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Length(MM)</label><input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Width(MM)</label><input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Weight(Ct)</label><input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
+               var j = i*1+1;
+               var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Height(Micron)</label><input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Length(MM)</label><input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Width(MM)</label><input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Weight(Ct)</label><input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
                $('#experienceSection').append($section);
            }
          });
