@@ -128,10 +128,10 @@
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
                 <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
-                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#receiveModal">Receive</a></li>
-                <li class="stockli mt-2"><a href="{{ url('lots')}}">Lots</a></li>
-                <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li>
-                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#returnModal">Return</a></li>
+                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#receiveModal">AddChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
+                {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
+                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#returnModal">ReciveLot</a></li>
             </ul>
             <div class="modal fade" id="receiveModal" tabindex="-1" aria-labelledby="receiveModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -399,10 +399,10 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-md-4 float-left">
+                    {{-- <div class="col-md-4 float-left">
                         <a href="{{ url('createchocolatedashboard') }}"><button type="button" class="btn btn-outline-secondary mt-1">Create</button></a>
-                    </div>
-                    <div class="col-md-7">
+                    </div> --}}
+                    {{-- <div class="col-md-7">
                         <li class="stockli nav-item dropdown">
                             <a href="#" class="nav-link " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-filter"></i> Filter</button></a>
@@ -425,7 +425,7 @@
                     <div class="col-md-1 float-right">
                         <a href="{{ url('chocolatedashboard') }}"><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-arrows-to-dot"></i></button></a>
                         <a href="{{ url('chocolatedashboardlist') }}"><button type="button" class="btn btn-outline-secondary mt-1"><i class="fa-solid fa-list"></i></button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

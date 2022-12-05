@@ -500,9 +500,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Chocolate Lines</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="otherinfo-tab" data-toggle="tab" href="#otherinfo" role="tab" aria-controls="profile" aria-selected="false">Other Info</a>
-                                    </li>
+                                    
                                 </ul>
                                 <div class="tab-content pl-3 p-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -512,19 +510,25 @@
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col"># Lot</th>
-                                                                <th scope="col">Pcs</th>
-                                                                <th scope="col">Weight(Ct)</th>
+                                                                <th scope="col">No</th>
+                                                                <th scope="col">Machineno</th>
+                                                                <th scope="col">Startdate</th>
+                                                                <th scope="col">Starttime(Ct)</th>
 
                                                             </tr>
                                                         </thead>
+                                                        <?php $data=App\Models\chocolate::get(); ?>
+                                                        @foreach($data as $ans)
                                                         <tbody>
+
                                                             <tr>
-                                                                <th scope="row"></th>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                                <td>{{ $ans->machineno }}</td>
+                                                                <td>{{ $ans->startdate }}</td>
+                                                                <td>{{ $ans->starttime }}</td>
                                                             </tr>
                                                         </tbody>
+                                                        @endforeach
                                                     </table>
                                                 </div>
                                             </div>
