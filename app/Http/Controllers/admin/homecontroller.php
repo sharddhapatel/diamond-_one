@@ -50,18 +50,14 @@ class homecontroller extends Controller
    public function chocolatedashboardlist(){
       return view('admin.chocolatedashboardlist');
      }
-     public function chocolatedashboard(){
-      return view('admin.chocolatedashboard');
-     }
+  
      public function createbatchsequence(){
       return view('admin.createbatchsequence');
      }
      public function createboiling1(){
       return view('admin.createboiling1');
      }
-     public function createchocolatedashboard(){
-      return view('admin.createchocolatedashboard');
-     }
+ 
      public function createcolor(){
       return view('admin.createcolor');
      }
@@ -69,9 +65,7 @@ class homecontroller extends Controller
       return view('admin.createfinishtype');
      }
 
-     public function createmachine(){
-      return view('admin.createmachine');
-     }
+
      public function createlotprocess(){
       return view('admin.createlotprocess');
      }

@@ -136,7 +136,7 @@
             </ul>
         </div>
         <!-- Header-->
-        <div class="content" style="background-color: rgba(0,0,0,.03);">
+        {{-- <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-2">
@@ -148,7 +148,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
@@ -157,73 +157,45 @@
                     <div class="col-lg-8 mt-4">
                         <div class="card">
                             <div class="card-body">
-                                <div class="row mt-2">
-                                    <div class="col col-md-8">
+                                {{-- <div class="row mt-2"> --}}
+                                    {{-- <div class="col col-md-8">
                                         <input id="cc-name" name="cc-name" type="text" class="form-control cc-name valid" data-val="true" data-val-required="Please enter the name on card" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="cc-name">
-                                    </div>
-                                    <div class="col col-md-4">
+                                    </div> --}}
+                                    {{-- <div class="col col-md-4">
                                         <i class="fa-solid fa-camera float-right cameraborder"></i>
-                                    </div>
-                                </div>
+                                    </div> --}}
+                                {{-- </div> --}}
                                 <div class="row mt-5">
+                                    
                                     <div class="col-lg-6">
                                         <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            @if(Session::has('message'))
+                                            <div class="alert alert-success">
+                                                <i class="fa-lg fa fa-warning"></i>
+                                                {!! session('message') !!}
+                                            </div>
+                                            @elseif(Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <i class="fa-lg fa fa-warning"></i>
+                                                {!! session('error') !!}
+                                            </div>
+                                            @endif
+                                            <form action="{{ url('insertmachine') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                               {{ csrf_field() }}
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Vender : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Machine Name : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <select class="custom-select d-block w-100" required="">
-                                                            <option value="0">Please select</option>
-                                                            <option value="1">SQ</option>
-                                                            <option value="2">Option #2</option>
-                                                            <option value="3">Option #3</option>
-                                                        </select>
+                                                        <input type="text" id="email-input" name="name" placeholder="name" required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Partner Ref: </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Growth Rate : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <input type="email" id="email-input" name="email-input" placeholder="0.00" class="form-control">
+                                                        <input type="number" id="email-input" name="rate" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Model: </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input type="email" id="email-input" name="email-input" placeholder="0.00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Serial Number: </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input type="email" id="email-input" name="email-input" placeholder="0.00" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Effective Date : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="DD / MM / YY">
-                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Cost : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input type="email" id="email-input" name="email-input" placeholder="0.00" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Warrantly Expiration Date : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" value="" data-val="true" data-val-required="Please enter the card expiration" data-val-cc-exp="Please enter a valid month and year" placeholder="DD / MM / YY">
-                                                        <span class="help-block" data-valmsg-for="cc-exp" data-valmsg-replace="true"></span>
-                                                    </div>
-                                                </div>
+                                            
+                                                <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>
                                             </form>
                                         </div>
                                     </div>
@@ -231,14 +203,9 @@
 
                                 <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                                     <li class="nav-item active">
-                                        <a class="nav-link active show" id="Equipments-tab" data-toggle="tab" href="#Equipments" role="tab" aria-controls="home" aria-selected="true" aria-expanded="true">Equipments</a>
+                                        <a class="nav-link active show" id="Equipments-tab" data-toggle="tab" href="#Equipments" role="tab" aria-controls="home" aria-selected="true" aria-expanded="true">Machine</a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Description-tab" data-toggle="tab" href="#Description" role="tab" aria-controls="home" aria-selected="false" aria-expanded="false">Description</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="Machineimage-tab" data-toggle="tab" href="#Machineimage" role="tab" aria-controls="home" aria-selected="false" aria-expanded="false">Machine Image</a>
-                                    </li>
+                          
 
                                 </ul>
                                 <div class="tab-content pl-3 p-1" id="myTabContent">
@@ -249,29 +216,26 @@
                                                     <table class="table">
                                                         <thead>
                                                             <tr>
-                                                                <th scope="col"># Equipment</th>
-                                                                <th scope="col">Vendor</th>
-                                                                <th scope="col">Partner Ref</th>
-                                                                <th scope="col">Model</th>
-                                                                <th scope="col">Serial Number</th>
-                                                                <th scope="col">Effective Date</th>
-                                                                <th scope="col">Cost</th>
-                                                                <th scope="col">Warrantly Expiration Date</th>
+                                                                <th scope="col">No</th>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">GrowthRate</th>
+                                                                
+                                                                <th scope="col">Delete</th>
 
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                            <?php $data=App\Models\machine::get(); ?>
+                                                            @foreach($data as $ans)
                                                             <tr>
-                                                                <th scope="row"></th>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
+                                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                                <td>{{ $ans->name }}</td>
+                                                                <td>{{ $ans->growthrate }} %</td>
+                                                                <td> <button type="submit" class="btn btn-success btn-sm float-center">
+                                                                    <a href="{{url('deletemachine')}}/{{$ans->id}}">Delete</a></button></td>
+                                                                
                                                             </tr>
-
+@endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -301,9 +265,9 @@
             </div>
         </div>
 
-        <!-- /header -->
-        <!-- Header-->
-        <div class="breadcrumbs">
+
+     <!-- Header-->
+      {{-- <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-md-2"></div>
@@ -328,9 +292,9 @@
                     <div class="col-md-2"></div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="content">
+        {{-- <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
                     <div class="col-md-2"></div>
@@ -369,7 +333,7 @@
 
             </div>
 
-        </div>
+        </div> --}}
 
         <!-- Right Panel -->
 

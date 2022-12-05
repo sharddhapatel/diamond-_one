@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChocolatesTable extends Migration
+class UpdateChocolatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,13 +15,9 @@ class CreateChocolatesTable extends Migration
     {
         Schema::create('chocolates', function (Blueprint $table) {
             $table->id();
-            $table->string('batch')->nullable();
-            $table->string('pcs')->nullable();
-            $table->string('shape')->nullable();
-            $table->string('height')->nullable();
-            $table->string('length')->nullable();
-            $table->string('width')->nullable();
-            $table->string('weight')->nullable();
+             $table->string('machineno')->nullable();
+            $table->string('startdate')->nullable();
+            $table->string('starttime')->nullable();
             $table->timestamps();
         });
     }

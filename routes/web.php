@@ -12,6 +12,8 @@ USE App\Http\Controllers\admin\stockcontroller;
 use App\Http\Controllers\admin\finalstock;
 use App\Http\Controllers\admin\jobworkcontroller;
 use App\Http\Controllers\admin\settingcontroller;
+use App\Http\Controllers\admin\chocolatecontroller;
+use App\Http\Controllers\admin\machinecontroller;
 // use Illuminate\Support\Facades\Auth;
 
 /*
@@ -77,14 +79,11 @@ route::get('boilingend', [homecontroller::class, 'boilingend']);
 route::get('boilingendlist', [homecontroller::class, 'boilingendlist']);
 route::get('cancelpacketlist', [homecontroller::class, 'cancelpacketlist']);
 route::get('centerdepartment', [homecontroller::class, 'centerdepartment']);
-route::get('chocolatedashboard', [homecontroller::class, 'chocolatedashboard']);
 route::get('chocolatedashboardlist', [homecontroller::class, 'chocolatedashboardlist']);
-route::get('createchocolatedashboard', [homecontroller::class, 'createchocolatedashboard']);
 route::get('createboiling1', [homecontroller::class, 'createboiling1']);
 route::get('createbatchsequence', [homecontroller::class, 'createbatchsequence']);
 route::get('createcolor', [homecontroller::class, 'createcolor']);
 route::get('createfinishtype', [homecontroller::class, 'createfinishtype']);
-route::get('createmachine', [homecontroller::class, 'createmachine']);
 route::get('createlotprocess', [homecontroller::class, 'createlotprocess']);
 route::get('createmachinelaser', [homecontroller::class, 'createmachinelaser']);
 route::get('createmachineequipments', [homecontroller::class, 'createmachineequipments']);
@@ -286,6 +285,20 @@ route::get('jangad', [jobworkcontroller::class, 'jangad']);
 route::get('createJangad', [jobworkcontroller::class, 'createJangad']);
 route::post('insertjangad', [jobworkcontroller::class, 'insertjangad']);
 
+
+
+// **********************************machine***********************************************
+route::get('createmachine', [machinecontroller::class, 'createmachine']);
+route::post('insertmachine', [machinecontroller::class, 'insertmachine']);
+route::get('deletemachine/{id}', [machinecontroller::class, 'deletemachine']);
+
+
+// ******************************************chocolate*************************************************************
+route::get('chocolatedashboard', [chocolatecontroller::class, 'chocolatedashboard']);
+route::get('insertchocolate', [chocolatecontroller::class, 'insertchocolate']);
+route::get('createchocolatedashboard', [chocolatecontroller::class, 'createchocolatedashboard']);
+route::post('insertchocolatedashboard', [chocolatecontroller::class, 'insertchocolatedashboard']);
+Route::post('webcam', [chocolatecontroller::class, 'store'])->name('webcam.capture');
 // ****************************************RoleandPermission**********************************************************
 Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
 Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);

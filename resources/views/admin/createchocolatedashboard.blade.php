@@ -126,7 +126,7 @@
         <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('chocolatedashboard')}}">Chocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
                 <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#receiveModal">Receive</a></li>
                 <li class="stockli mt-2"><a href="{{ url('lots')}}">Lots</a></li>
                 <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li>
@@ -400,15 +400,31 @@
                 <div class="row">
 
                     <div class="col-md-9">
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Save </button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Discard </button></a>
+                        <form method="POST" action="{{ route('webcam.capture') }}">
+                            {{ csrf_field() }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="my_camera"></div>
+                                    <br/>
+                                    <input type=button value="Take Snapshot" onClick="take_snapshot()">
+                                    <input type="hidden" name="image" class="image-tag">
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="results">Your captured image will appear here...</div>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <br/>
+                                    <button class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="col-md-3">
+                    {{-- <div class="col-md-3">
                         <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Requested</button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Approved</button></a>
                         <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Cancelled</button></a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -420,37 +436,50 @@
                     <div class="col-lg-8 mt-4">
                         <div class="card">
                             <div class="card-body">
-                                <div class="col col-md-12">
+                                {{-- <div class="col col-md-12">
                                     <a href="#">
                                         <h2>New</h2>
                                     </a>
-                                </div>
+                                </div> --}}
                                 <div class="row">
                                     <div class="col-lg-9">
                                         <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Pcs : </label></div>
+                                            @if(Session::has('message'))
+                                            <div class="alert alert-success">
+                                                <i class="fa-lg fa fa-warning"></i>
+                                                {!! session('message') !!}
+                                            </div>
+                                            @elseif(Session::has('error'))
+                                            <div class="alert alert-danger">
+                                                <i class="fa-lg fa fa-warning"></i>
+                                                {!! session('error') !!}
+                                            </div>
+                                            @endif
+                                            <form action="{{ url('insertchocolatedashboard') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                                {{ csrf_field() }}
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">Machine No : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">0</p>
+                                                        <input type="number" id="email-input" name="no" placeholder="machineno" required class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Total Weight(Ct): </label></div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">StartDate : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">0.00</p>
+                                                        <input type="date" id="email-input" name="sdate" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Avg.Weight(Ct) : </label></div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">StartTime : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <p class="form-control-static">0.00</p>
+                                                        <input type="time" id="email-input" name="stime" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
+                                                <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div class="col-lg-3">
+                                    {{-- <div class="col-lg-3">
                                         <div class="card-body card-block">
                                             <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                 <div class="row form-group">
@@ -465,7 +494,7 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                                     <li class="nav-item">
@@ -537,7 +566,7 @@
         </div>
         <!-- /header -->
         <!-- Header-->
-        <div class="breadcrumbs">
+        {{-- <div class="breadcrumbs">
             <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-md-2"></div>
@@ -603,12 +632,29 @@
 
             </div>
 
-        </div>
+        </div> --}}
         <!-- /#right-panel -->
 
         <!-- Right Panel -->
 
         <!-- Scripts -->
+        <script language="JavaScript">
+            Webcam.set({
+                width: 490,
+                height: 350,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+            
+            Webcam.attach( '#my_camera' );
+            
+            function take_snapshot() {
+                Webcam.snap( function(data_uri) {
+                    $(".image-tag").val(data_uri);
+                    document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                } );
+            }
+        </script>
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}} "></script>
