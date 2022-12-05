@@ -400,24 +400,13 @@
                 <div class="row">
 
                     <div class="col-md-9">
-                        <form method="POST" action="{{ route('webcam.capture') }}">
-                            {{ csrf_field() }}
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div id="my_camera"></div>
-                                    <br/>
-                                    <input type=button value="Take Snapshot" onClick="take_snapshot()">
-                                    <input type="hidden" name="image" class="image-tag">
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="results">Your captured image will appear here...</div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <br/>
-                                    <button class="btn btn-success">Submit</button>
-                                </div>
-                            </div>
-                        </form>
+                        <form method="post" action="{{url('upload')}}" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                              <div class="input-group control-group increment" >
+                                <input type="file" name="image" accept="image/*" capture>
+                              </div>
+                              <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
+                      </form>      
                     </div>
                     {{-- <div class="col-md-3">
                         <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
@@ -642,23 +631,7 @@
         <!-- Right Panel -->
 
         <!-- Scripts -->
-        <script language="JavaScript">
-            Webcam.set({
-                width: 490,
-                height: 350,
-                image_format: 'jpeg',
-                jpeg_quality: 90
-            });
-            
-            Webcam.attach( '#my_camera' );
-            
-            function take_snapshot() {
-                Webcam.snap( function(data_uri) {
-                    $(".image-tag").val(data_uri);
-                    document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-                } );
-            }
-        </script>
+       
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}} "></script>

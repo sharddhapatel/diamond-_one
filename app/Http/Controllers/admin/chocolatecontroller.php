@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\chocolate;
+use App\Models\webimage;
 use Illuminate\Support\Facades\Storage;
 class chocolatecontroller extends Controller
 {
@@ -28,19 +29,14 @@ class chocolatecontroller extends Controller
        }
        public function store(Request $request)
        {
-           $img = $request->image;
-           $folderPath = "uploads/";
+           $this->validate($request, [
+                   'image' => 'required'
+           ]);
+   
+           $pic= new webimage;
+           $pic->image=$request->image;
+           $pic->save();
            
-           $image_parts = explode(";base64,", $img);
-           $image_type_aux = explode("image/", $image_parts[0]);
-           $image_type = $image_type_aux[1];
-           
-           $image_base64 = base64_decode($image_parts[1]);
-           $fileName = uniqid() . '.png';
-           
-           $file = $folderPath . $fileName;
-           Storage::put($file, $image_base64);
-           
-           dd('Image uploaded successfully: '.$fileName);
+           return back()->with('success', '');
        }
 }
