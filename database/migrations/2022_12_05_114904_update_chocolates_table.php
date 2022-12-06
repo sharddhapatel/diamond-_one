@@ -18,6 +18,8 @@ class UpdateChocolatesTable extends Migration
              $table->string('machineno')->nullable();
             $table->string('startdate')->nullable();
             $table->string('starttime')->nullable();
+            $table->string('starttime')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

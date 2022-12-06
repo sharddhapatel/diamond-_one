@@ -154,8 +154,8 @@
                         <li><a class="dropdown-item" href="{{ url('purity') }}">Purity</a></li>
                     </ul>
                 </li>
-                <li class="stockli mt-2"><a href="{{ url('stockdashboard1') }}">Stock Dashbord</a></li>
-                <li class="stockli mt-2"><a href="{{ url('seeds1') }}">Seeds</a></li>
+                {{-- <li class="stockli mt-2"><a href="{{ url('stockdashboard1') }}">Stock Dashbord</a></li>
+                <li class="stockli mt-2"><a href="{{ url('seeds1') }}">Seeds</a></li> --}}
             </ul>
 
             <div class="modal fade" id="addpacketsModal" tabindex="-1" aria-labelledby="addpacketsModalLabel" aria-hidden="true">

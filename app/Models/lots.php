@@ -10,6 +10,6 @@ class lots extends Model
     use HasFactory;
     public $table = 'lots';
     protected $fillable = [
-        'batch','pcs','shape','height','length','width','weight'
+        'machineno','enddate','endtime','growinghour','machineimage'
     ];
 }

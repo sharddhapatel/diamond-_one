@@ -180,11 +180,11 @@
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Pcs:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">{{ $c }}</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label"></label></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-password" class=" form-control-label">Weight:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">{{ $c1 }}</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label"></label></div>
                                                 </div>
                                             </form>
                                         </div>
@@ -201,11 +201,11 @@
                                             <form action="#" method="post" class="form-horizontal">
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label">Pcs:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">{{ $b }}</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label"></label></div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-6"><label for="hf-password" class=" form-control-label">Weight:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label">{{ $b1 }}</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label"></label></div>
                                                 </div>
                                             </form>
                                         </div>

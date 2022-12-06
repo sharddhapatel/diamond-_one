@@ -298,7 +298,10 @@ route::get('chocolatedashboard', [chocolatecontroller::class, 'chocolatedashboar
 route::get('insertchocolate', [chocolatecontroller::class, 'insertchocolate']);
 route::get('createchocolatedashboard', [chocolatecontroller::class, 'createchocolatedashboard']);
 route::post('insertchocolatedashboard', [chocolatecontroller::class, 'insertchocolatedashboard']);
-Route::post('upload', [chocolatecontroller::class, 'store'])
+// Route::post('upload', [chocolatecontroller::class, 'store']);
+route::get('addchocolate', [chocolatecontroller::class, 'addchocolate']);
+route::get('recivelot', [chocolatecontroller::class, 'recivelot']);
+route::post('insertendgrowing', [chocolatecontroller::class, 'insertendgrowing']);
 // ****************************************RoleandPermission**********************************************************
 Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
 Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);

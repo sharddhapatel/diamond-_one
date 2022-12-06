@@ -126,11 +126,11 @@
         <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
-                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#receiveModal">Receive</a></li>
-                <li class="stockli mt-2"><a href="{{ url('lots')}}">Lots</a></li>
-                <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li>
-                <li class="stockli mt-2"><a class=" mt-1" data-bs-toggle="modal" data-bs-target="#returnModal">Return</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('addchocolate')}}">AddChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
+                {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
+                <li class="stockli mt-2"><a href="{{ url('recivelot') }}">ReciveLot</a></li>
             </ul>
             <div class="modal fade" id="receiveModal" tabindex="-1" aria-labelledby="receiveModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -140,129 +140,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-11">
-                                        <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number">
-                                    </div>
-                                    <div class="col-lg-1">
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#largeModal">Receive</button>
-                                    </div>
-                                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document" style="width: 53%;">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="largeModalLabel">Confirmation</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>
-                                                        Are you sure you want to Return a lot?
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
-                                                    <button type="button" class="btn btn-light">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 float-left">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-9"><label class=" form-control-label"><img src="{{URL:: asset('admin/assets/img/barcode.webp')}}" alt=""></label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"><input type="email" id="email-input" name="email-input" class="form-control"></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Records</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Lot</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Packets</a>
-                                                    </li>
-
-                                                </ul>
-                                                <div class="tab-content pl-3 p-1" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="card-body">
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th scope="col">#. Name</th>
-                                                                                <th scope="col">Height(Micro)</th>
-                                                                                <th scope="col">Length(MM)..</th>
-                                                                                <th scope="col">Width(MM)</th>
-                                                                                <th scope="col">Pcs</th>
-                                                                                <th scope="col">Weight(Ct)</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <th scope="row"></th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </form>
+                           
                         </div>
                         <div class="modal-footer float-left">
                             <button type="button" class="btn btn-secondary">Cancel</button>
@@ -386,9 +264,9 @@
         <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-md-4">
+                    {{-- <div class="col-md-4">
                         <h4 class="headerborder1">Chocolate / New</h4>
-                    </div>
+                    </div> --}}
                     <div class="col-md-4">
                     </div>
                     <div class="col-md-4"></div>
@@ -400,13 +278,7 @@
                 <div class="row">
 
                     <div class="col-md-9">
-                        <form method="post" action="{{url('upload')}}" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                              <div class="input-group control-group increment" >
-                                <input type="file" name="image" accept="image/*" capture>
-                              </div>
-                              <button type="submit" class="btn btn-primary" style="margin-top:10px">Submit</button>
-                      </form>      
+                        
                     </div>
                     {{-- <div class="col-md-3">
                         <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
@@ -464,9 +336,31 @@
                                                         <input type="time" id="email-input" name="stime" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">MachineImage : </label></div>
+                                                    <div class="col-12 col-md-8">
+                                                        <input type="file" name="image" accept="image/*" capture>
+                                                    </div>
+                                                </div>
                                                 <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>
                                             </form>
+                                            {{-- <div class="row form-group">
+                                                <div class="col col-md-4"><label class=" form-control-label">MachineImage : </label></div>
+                                                <div class="col-12 col-md-8">
+                                                    <form method="post" action="{{url('upload')}}" enctype="multipart/form-data">
+                                                        {{csrf_field()}}
+                                                        
+                                                            <input type="file" name="image" accept="image/*" capture>
+                                                        
+                                                          <div class="col-md-4 float-left">
+                                                           <button type="submit" class="btn btn-outline-secondary mt-1">Submit</button>
+                                                        </div>
+                                                  </form> 
+                                                </div>
+                                            </div> --}}
+                                           
                                         </div>
+                                        
                                     </div>
                                     {{-- <div class="col-lg-3">
                                         <div class="card-body card-block">
@@ -502,7 +396,9 @@
                                                                 <th scope="col">No</th>
                                                                 <th scope="col">Machineno</th>
                                                                 <th scope="col">Startdate</th>
-                                                                <th scope="col">Starttime(Ct)</th>
+                                                                <th scope="col">Starttime</th>
+                                                                <th scope="col">Image</th>
+
 
                                                             </tr>
                                                         </thead>
@@ -515,6 +411,7 @@
                                                                 <td>{{ $ans->machineno }}</td>
                                                                 <td>{{ $ans->startdate }}</td>
                                                                 <td>{{ $ans->starttime }}</td>
+                                                                <td><img src="{{url('item_img')}}/{{$ans->image}}"  hight="15px" width="100px"></td>
                                                             </tr>
                                                         </tbody>
                                                         @endforeach

@@ -10,6 +10,6 @@ class chocolate extends Model
     use HasFactory;
     public $table = 'chocolates';
     protected $fillable = [
-        'machineno','startdate','starttime'
+        'machineno','startdate','starttime','image'
     ];
 }
