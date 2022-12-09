@@ -188,7 +188,35 @@
 
 
                 <div class="row">
+                    <?php $data=App\Models\machine::get();?>
+                    @foreach($data as $ans)
                     <div class="col-lg-3">
+                        <div class="card">
+                            {{-- <div class="card-header">
+                                <strong>CB</strong>
+                                <strong class="float-right">Rs. 0.00</strong>
+                            </div> --}}
+                            <div class="card-body card-block">
+                                <form action="#" method="post" class="form-horizontal">
+                                    <div class="row form-group1 mt-2">
+                                        <div class="col-lg-3">
+                                            <i class="fa fa-camera usercamera"></i>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="row">
+                                                <div class="col col-md-12"><label for="hf-email" class=" form-control-label font_size">Model :{{ $ans->name }}</label></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col col-md-12"><label for="hf-email" class=" form-control-label font_size">Growth Rate :{{ $ans->growthrate }}</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div class="col-lg-3">
                         <div class="card">
                             <div class="card-header">
                                 <strong>CB</strong>
@@ -387,32 +415,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>CB</strong>
-                                <strong class="float-right">Rs. 0.00</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <form action="#" method="post" class="form-horizontal">
-                                    <div class="row form-group1 mt-2">
-                                        <div class="col-lg-3">
-                                            <i class="fa fa-camera usercamera"></i>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="row">
-                                                <div class="col col-md-12"><label for="hf-email" class=" form-control-label font_size">Model :</label></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col col-md-12"><label for="hf-email" class=" form-control-label font_size">Serial No :</label></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

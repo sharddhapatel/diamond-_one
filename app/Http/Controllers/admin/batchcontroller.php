@@ -27,14 +27,16 @@ class batchcontroller extends Controller
        
            return redirect()->back()->with('message', 'Batch added successfully');
        }
-    public function shape(){       
-        return view('admin.shape');
+    public function shape(){  
+       $page= shap::paginate(3);
+        return view('admin.shape')->with(['page'=>$page]);
        }
        public function insertshape(Request $request)
        {
            $shape = new shap;
            $shape->name = $request->get('name');
            $shape->save();
+           
         return redirect('shape')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
        }
 

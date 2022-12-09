@@ -4265,3 +4265,51 @@ i.fa-solid.fa-camera {
   #reset {
     width:50px;
   }
+  /* pagination */
+  .pagination {
+    display: flex !important;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    width: 100%;
+    border-top: 1px solid #e1e7ec;
+}
+
+.pagination>.column {
+    display: table-cell;
+    padding-top: 16px;
+    vertical-align: middle;
+}
+
+.pagination .pages {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.pagination .pages>li {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 34px;
+    text-align: center;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #5a0c2c;
+    border-color: #5a0c2c;
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    border: 1px solid #dee2e6;
+}

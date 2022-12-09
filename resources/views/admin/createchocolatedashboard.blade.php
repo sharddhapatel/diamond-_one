@@ -126,7 +126,7 @@
         <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('addchocolate')}}">AddChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
                 {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
@@ -325,21 +325,22 @@
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">StartDate : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Start Date : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="date" id="email-input" name="sdate" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">StartTime : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Start ime : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="time" id="email-input" name="stime" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">MachineImage : </label></div>
-                                                    <div class="col-12 col-md-8">
+                                                    <div class="col col-md-4"><label class=" form-control-label">Chocolate Image : </label></div>
+                                                    <div class="col-12 col-md-8" style="display:flex;">
                                                         <input type="file" name="image" accept="image/*" capture>
+                                                        <B style="font-size=5px;">TakeaSnapshort:-</B><input type="file"  name="image" accept="image/*" webcam>
                                                     </div>
                                                 </div>
                                                 <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>

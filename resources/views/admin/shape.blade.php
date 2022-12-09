@@ -29,8 +29,14 @@
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/theme0990.css')}}"> --}}
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/chosen/chosen.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
+    <link rel=”stylesheet” href=”https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css    ” />
+    
+
+
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -533,13 +539,14 @@
 
         <div class="content">
             <div class="animated fadeIn">
-                <div class="row">
+                <div class="row" >
 
                     <div class="col-md-12">
                         <div class="card">
 
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <table id=bootstrap-data-table  class="table table-striped table-bordered">
+                                    {{-- <table id="example" class="display" style="width:100%"> --}}
                                     <thead>
                                         <tr>
                                             <th>#</th>
@@ -548,21 +555,30 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $shape = App\Models\shap::get(); ?>
-@foreach($shape as $ans)
+                                        {{-- <?php $shap = App\Models\shap::get(); ?> --}}
+@foreach($page as $ans)
                                         <tr>
                                            <td>{{ $loop->iteration}}</td>
                                              <td> 
                                               {{-- <input class="togglefunction" type="checkbox">  --}}
                                                 <label class="form-check-label toggle_status" > {{ $ans->name }} </label>
                                             </td> 
-<td> <button type="submit" class="btn btn-outline-secondary mt-1"><a href="shaperemove/{{ $ans->id}}"> Remove </a></button></td>
+                                            <td> 
+                                                <button type="submit" class="btn btn-outline-secondary mt-1"><a href="shaperemove/{{ $ans->id}}"> Remove </a></button>
+                                            </td>
                                           
                                         </tr>
                                         @endforeach
-                                    
+                                      
                                     </tbody>
+                                   
+                                   
                                 </table>
+                            {{-- <div class="paginate" style="display: flex;">{{  $page->links()  }}</div> --}}
+                                
+                            
+                               
+                                     
                             </div>
                         </div>
                     </div>
@@ -572,11 +588,18 @@
             </div>
         </div>
 
-
-
         <!-- Right Panel -->
 
         <!-- Scripts -->
+        <script type="text/javascript" 
+        src="https://code.jquery.com/jquery-3.5.1.js">
+        </script>
+     
+         <!-- Datatable plugin JS library file -->
+        <script type="text/javascript" src=
+   "https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+        </script>
+        {{-- <script type=”text/javascript” src=”https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js”></script> --}}
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js')}} "></script>
@@ -594,9 +617,9 @@
         <script src="{{URL:: asset('admin/assets/js/main.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/js/lib/chosen/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-        <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+        {{-- <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script> --}}
 
-
+ 
         <script type="text/javascript">
             $(document).ready(function() {
                 $('#bootstrap-data-table-export').DataTable();

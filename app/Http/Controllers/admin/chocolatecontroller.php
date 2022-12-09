@@ -63,7 +63,7 @@ class chocolatecontroller extends Controller
             $file = $request->file('img');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move('item_img', $filename);
+            $file->move('image', $filename);
             $growing->machineimage = $filename;
         }
            $growing->save();

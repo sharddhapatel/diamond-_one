@@ -127,7 +127,7 @@
         <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('addchocolate')}}">AddChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
                 {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
@@ -188,57 +188,71 @@
                     <div class="col-md-12 col-xs-6 col-sm-6">
                         <div class="card">
                             <div class="row">
-                               
-                              
+                           
+                              <?php $data=App\Models\Bactch::get();?>
+                              @foreach($data as $ans)
                                 <div class="col-lg-3">
                                     {{-- <a href="{{ url('clickchocolatedashboard') }}"> --}}
                                      
                                     <div class="card">
                                         <div class="card-body card-block">
-                                            <form action="#" method="post" class="form-horizontal">
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">A7-CH708-28</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size float-right">15:40:04</label></div>
-                                                </div>
+                                            {{-- <form action="#" method="get" class="form-horizontal"> --}}
                                                 {{-- <div class="row form-group1">
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Batch:</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Total Weight(Ct):40.00</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size"></label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size float-right"></label></div>
                                                 </div> --}}
                                                 <div class="row form-group1">
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Pcs:</label></div>
-                                                    {{-- <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Weight(Ct):5.97</label></div> --}}
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Batch:{{ $ans-> name}}</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Total Weight(Ct):</label></div>
                                                 </div>
                                                 {{-- <div class="row form-group1">
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Pcs:</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Weight(Ct):</label></div>
+                                                </div>
+                                                <div class="row form-group1">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Lots:KOHINOOR</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Height(Micron):7.86</label></div>
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Height(Micron):</label></div>
                                                 </div>
                                                 <div class="row form-group1">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">LOT40-2</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg.L*W:15.75*15.63</label></div>
-                                                </div> --}}
+                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg.L*W:</label></div>
+                                                </div>
                                                 <div class="row form-group1 mt-2">
                                                     <div class="col col-md-6"> <button type="button" class="btn btn-secondary btn-sm float-left"> Growing Done </button></div>
                                                     <div class="col col-md-6"> <button type="button" class="btn btn-info btn-sm float-right"> In Progress </button></div>
-                                                </div>
+                                                </div> --}}
                                                 <div id="countdowntimer"><span id="future_date"><span></div>
-{{--                                                  
-                                                <div id="time">0</div>
-                                            <canvas id="stopwatch" width = 50 height = 50></canvas> --}}
-                                            <form>
-                                                <input type="button" value="Start count!" onclick="doTimer()" />
-                                                <input type="text" id="txt" />
-                                                <input type="button" value="Stop count!" onclick="stopCount()" />
-                                                </form>
-                                            
-                                            </form>
-                                          
+                                              
+                                            <div id="time">
+                                                <span class="digit" id="hr">
+                                                  00</span>
+                                                <span class="txt">Hr</span>
+                                                <span class="digit" id="min">
+                                                  00</span>
+                                                <span class="txt">Min</span>
+                                                <span class="digit" id="sec">
+                                                  00</span>
+                                                <span class="txt">Sec</span>
+                                                <span class="digit" id="count">
+                                                  00</span>
+                                            </div>
+                                            <div id="buttons">
+                                                <button class="btn" id="start">
+                                                  Start</button>
+                                                <button class="btn" id="stop">
+                                                  Stop</button>
+                                                <button class="btn" id="reset">
+                                                  Reset</button>
+                                            </div>
+                                        {{-- </form> --}}
                                         </div>
                                     </div>
                                     
                                 {{-- </a> --}}
                                 </div>
+                                @endforeach
                                
-                               
+                             
                                 {{-- <div class="col-lg-3">
                                     <div class="card">
                                         <div class="card-body card-block">
@@ -304,45 +318,88 @@
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
-<script>
-    
-</script>
+        <script src="script.js"></script>
 
    <script type="text/javascript">
-var c=0;
-var t;
-var timer_is_on=0;
-
-function timedCount()
-{
-document.getElementById('txt').value=c;
-c=c+1;
-t=setTimeout("timedCount()",1000);
-}
-
-function doTimer()
-{
-if (!timer_is_on)
-  {
-  timer_is_on=1;
-  timedCount();
-  }
-}
-
-function stopCount()
-{
-clearTimeout(t);
-timer_is_on=0;
+let startBtn = document.getElementById('start');
+let stopBtn = document.getElementById('stop');
+let resetBtn = document.getElementById('reset');
+  
+let hour = 00;
+let minute = 00;
+let second = 00;
+let count = 00;
+  
+startBtn.addEventListener('click', function () {
+    timer = true;
+    stopWatch();
+});
+  
+stopBtn.addEventListener('click', function () {
+    timer = false;
+});
+  
+resetBtn.addEventListener('click', function () {
+    timer = false;
+    hour = 0;
+    minute = 0;
+    second = 0;
+    count = 0;
+    document.getElementById('hr').innerHTML = "00";
+    document.getElementById('min').innerHTML = "00";
+    document.getElementById('sec').innerHTML = "00";
+    document.getElementById('count').innerHTML = "00";
+});
+  
+function stopWatch() {
+    if (timer) {
+        count++;
+  
+        if (count == 100) {
+            second++;
+            count = 0;
+        }
+  
+        if (second == 60) {
+            minute++;
+            second = 0;
+        }
+  
+        if (minute == 60) {
+            hour++;
+            minute = 0;
+            second = 0;
+        }
+  
+        let hrString = hour;
+        let minString = minute;
+        let secString = second;
+        let countString = count;
+  
+        if (hour < 10) {
+            hrString = "0" + hrString;
+        }
+  
+        if (minute < 10) {
+            minString = "0" + minString;
+        }
+  
+        if (second < 10) {
+            secString = "0" + secString;
+        }
+  
+        if (count < 10) {
+            countString = "0" + countString;
+        }
+  
+        document.getElementById('hr').innerHTML = hrString;
+        document.getElementById('min').innerHTML = minString;
+        document.getElementById('sec').innerHTML = secString;
+        document.getElementById('count').innerHTML = countString;
+        setTimeout(stopWatch, 10);
+    }
 }
 </script>
-
-
-
-
-
-
-
 
         <script>
             jQuery(document).ready(function() {

@@ -126,7 +126,7 @@
         <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('addchocolate')}}">AddChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
                 {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
@@ -277,18 +277,18 @@
             <div class="animated fadeIn">
                 <div class="row">
 
-                    <div class="col-md-9">
+                    {{-- <div class="col-md-9">
                         <form method="post" action="{{url('upload')}}" enctype="multipart/form-data">
                             {{csrf_field()}}
-                              {{-- <div class="input-group control-group increment" > --}}
+                             
                                 <input type="file" name="image" accept="image/*" capture>
-                              {{-- </div> --}}
+                          
                               <div class="col-md-4 float-left">
                                <button type="submit" class="btn btn-outline-secondary mt-1">Submit</button>
                             </div>
                       </form> 
-                    </div>
-                   
+                    </div> 
+                    --}}
                 </div>
             </div>
         </div>
@@ -328,13 +328,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">StartDate : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Start Date : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="date" id="email-input" name="sdate" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">StartTime : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Start Time : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="time" id="email-input" name="stime" placeholder="Rate.." required class="form-control">
                                                     </div>

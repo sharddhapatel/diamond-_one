@@ -183,27 +183,29 @@
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">EndDate : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">End Date : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="date" id="email-input" name="edate" placeholder="edate.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">EndTime : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">End Time : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="time" id="email-input" name="etime" placeholder="etime.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">GrowingHours : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Growing Hours : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="text" id="email-input" name="ghour" placeholder="growinghours.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">MachineImage : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">Chocolate Image : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <input data-name="#gallery1" id="form__gallery-upload" name="img" class="form__gallery-upload" type="file" accept=".png, .jpg, .jpeg" >
+                                                        <input type="file" name="image" accept="image/*" capture>
+                                                       <h6>Take a Snapshort:- </h6> 
+                                                        <input type="file"  name="img" accept="image/*" webcam>
                                                     </div>
                                                 </div>
                                                 <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>
@@ -219,7 +221,7 @@
                                     </li>
                                     
                                 </ul> --}}
-                                {{-- <div class="tab-content pl-3 p-1" id="myTabContent">
+                                <div class="tab-content pl-3 p-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -282,7 +284,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -309,7 +311,6 @@
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
         <script src="{{URL:: asset('admin/assets/js/main.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
