@@ -171,10 +171,7 @@ class homecontroller extends Controller
      public function lotsdashboard(){
       return view('admin.lotsdashboard');
      }
-     public function lots(){
-      return view('admin.lots');
-     }
-
+ 
      public function locationlist(){
       return view('admin.locationlist');
      }

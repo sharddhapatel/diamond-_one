@@ -1,10 +1,9 @@
 <?php
-
-namespace Database\Seeds;
-
+  
 use Illuminate\Database\Seeder;
-use App\Models\User;
-
+// use App\Models\User;
+use App\Models\userlogin;
+   
 class AdminUserSeeder extends Seeder
 {
     /**
@@ -14,10 +13,10 @@ class AdminUserSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'name' => 'Hardik',
-            'email' => 'sharddhagarsondiya365@gmail.com',
-            'password' => bcrypt('2001'),
+        userlogin::create([
+            'name' => 'aaa',
+            'email' => 'example@gmail.com',
+            'password' => bcrypt('12345678'),
         ]);
     }
 }

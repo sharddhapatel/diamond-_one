@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateChocolatesTable extends Migration
+class CreateLoginTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class UpdateChocolatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('chocolates', function (Blueprint $table) {
+        Schema::create('login', function (Blueprint $table) {
             $table->id();
-             $table->string('machineno')->nullable();
-            $table->string('startdate')->nullable();
-            $table->string('starttime')->nullable();
-            $table->string('starttime')->nullable();
-            $table->string('image')->nullable();
+           
+            $table->string('name')->nullable();
+           $table->string('email')->nullable();
+           $table->string('password')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class UpdateChocolatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chocolates');
+        Schema::dropIfExists('login');
     }
 }

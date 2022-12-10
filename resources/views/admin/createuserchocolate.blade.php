@@ -34,8 +34,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/paginate.css')}}">
+
 </head>
 
 <body>
@@ -47,7 +46,7 @@
             <div class="top-left">
                 <div class="navbar-header">
                     <!-- <a class="navbar-brand" href="index-2.html"><img src="images/logo.png" alt="Logo"></a> -->
-                    <a class="navbar-brand" href="{{ url('centerdepartment') }}"><span>Chocolate</span></a>
+                    <a class="navbar-brand" href=""><span>Chocolate</span></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
@@ -118,150 +117,23 @@
 
                             <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>
 
-                            <a class="nav-link" href="{{ url('logout') }}"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="{{ url('') }}"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
-        <div class="card-header">
+        {{-- <div class="card-header">
             <strong class="card-title"><a href="{{ url('centerdepartment') }}"><i class="fa-solid fa-table-columns"></i></a> <a href="{{ url('chocolatedashboard') }}">Chocolate</a></strong>
             <ul class="stockul">
-                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">CreateChocolate</a></li>
+                <li class="stockli mt-2"><a href="{{ url('createchocolatedashboard')}}">createChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('addchocolate')}}">AddChocolate</a></li>
                 <li class="stockli mt-2"><a href="{{ url('lots')}}">EndGrowing</a></li>
                 {{-- <li class="stockli mt-2"><a href="{{ url('packetdashboard') }}">Packets</a></li> --}}
-                <li class="stockli mt-2"><a href="{{ url('recivelot') }}">ReciveLot</a></li>
+                {{-- <li class="stockli mt-2"><a href="{{ url('recivelot') }}">ReciveLot</a></li>
             </ul>
-            <div class="modal fade" id="receiveModal" tabindex="-1" aria-labelledby="receiveModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Scan For Receive</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                           
-                        </div>
-                        <div class="modal-footer float-left">
-                            <button type="button" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade" id="returnModal" tabindex="-1" aria-labelledby="returnModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Scan For Return</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="row">
-                                    <div class="col-lg-11">
-                                        <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified visa" value="" data-val="true" data-val-required="Please enter the card number" data-val-cc-number="Please enter a valid card number">
-                                    </div>
-                                    <div class="col-lg-1">
-                                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#largeModal">Return</button>
-                                    </div>
-                                    <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg" role="document" style="width: 53%;">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="largeModalLabel">Confirmation</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>
-                                                        Are you sure you want to Return a lot?
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-info" data-dismiss="modal">Ok</button>
-                                                    <button type="button" class="btn btn-light">Cancel</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-3 float-right">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-9"><label class=" form-control-label"><img src="{{URL:: asset('admin/assets/img/barcode.webp')}}" alt=""></label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"><input type="email" id="email-input" name="email-input" class="form-control"></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Packets</a>
-                                                    </li>
-
-                                                </ul>
-                                                <div class="tab-content pl-3 p-1" id="myTabContent">
-                                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                                        <div class="row">
-                                                            <div class="col-lg-12">
-                                                                <div class="card-body">
-                                                                    <table class="table">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th scope="col">#. Name</th>
-                                                                                <th scope="col">Height(Micro)</th>
-                                                                                <th scope="col">Length(MM)..</th>
-                                                                                <th scope="col">Width(MM)</th>
-                                                                                <th scope="col">Pcs</th>
-                                                                                <th scope="col">Weight(Ct)</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            <tr>
-                                                                                <th scope="row"></th>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                                <td></td>
-                                                                            </tr>
-
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer float-left">
-                            <button type="button" class="btn btn-secondary">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+           
+        </div> --}} 
         <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
                 <div class="row">
@@ -274,22 +146,7 @@
                 </div>
             </div>
         </div>
-        <div class="content" style="background-color: rgba(0,0,0,.03);">
-            <div class="animated fadeIn">
-                <div class="row">
-
-                    <div class="col-md-9">
-                        
-                    </div>
-                    {{-- <div class="col-md-3">
-                        <a href=""><button type="button" class="btn btn-dark text-white mt-1">Draft</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Requested</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Approved</button></a>
-                        <a href=""><button type="button" class="btn btn-outline-secondary mt-1">Cancelled</button></a>
-                    </div> --}}
-                </div>
-            </div>
-        </div>
+       
 
         <div class="content" style="background-color: rgba(0,0,0,.03);">
             <div class="animated fadeIn">
@@ -317,15 +174,11 @@
                                                 {!! session('error') !!}
                                             </div>
                                             @endif
-                                            <form action="{{ url('insertchocolatedashboard') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            <form action="{{ url('') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                 {{ csrf_field() }}
-                                               
-                                            
-
-
-
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label for="select" class=" form-control-label">Shape</label></div>
+                                                    
+                                                    <div class="col col-md-4"><label class=" form-control-label">Machine No : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <?php $machine=App\Models\machine::get();?>                                                                   
                                                        
@@ -336,77 +189,47 @@
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
                                                             @endforeach
                                                         </select>
-                                                      
-                                                    </div>
-                                                </div>
-
-
-
-
-                                                <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Start Date : </label></div>
-                                                    <div class="col-12 col-md-8">
-                                                        <input type="date" id="email-input" name="sdate" placeholder="Rate.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label class=" form-control-label">Start time : </label></div>
+                                                    <div class="col col-md-4"><label class=" form-control-label">End Date : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <input type="time" id="email-input" name="stime" placeholder="Rate.." required class="form-control">
+                                                        <input type="date" id="email-input" name="edate" placeholder="edate.." required class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">End Time : </label></div>
+                                                    <div class="col-12 col-md-8">
+                                                        <input type="time" id="email-input" name="etime" placeholder="etime.." required class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label class=" form-control-label">Growing Hours : </label></div>
+                                                    <div class="col-12 col-md-8">
+                                                        <input type="text" id="email-input" name="ghour" placeholder="growinghours.." required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
                                                     <div class="col col-md-4"><label class=" form-control-label">Chocolate Image : </label></div>
-                                                    <div class="col-12 col-md-8" style="display:flex;">
-                                                        {{-- <input type="file"  name="img" accept="image/*"> --}}
+                                                    <div class="col-12 col-md-8">
+                                                       
                                                         <input type="file"  name="img" accept="image/*" webcam>
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="col col-md-6"> <button type="submit" class="btn btn-secondary btn-sm float-left"> Save </button></div>
                                             </form>
-                                            {{-- <div class="row form-group">
-                                                <div class="col col-md-4"><label class=" form-control-label">MachineImage : </label></div>
-                                                <div class="col-12 col-md-8">
-                                                    <form method="post" action="{{url('upload')}}" enctype="multipart/form-data">
-                                                        {{csrf_field()}}
-                                                        
-                                                            <input type="file" name="image" accept="image/*" capture>
-                                                        
-                                                          <div class="col-md-4 float-left">
-                                                           <button type="submit" class="btn btn-outline-secondary mt-1">Submit</button>
-                                                        </div>
-                                                  </form> 
-                                                </div>
-                                            </div> --}}
-                                           
                                         </div>
                                         
                                     </div>
-                                    {{-- <div class="col-lg-3">
-                                        <div class="card-body card-block">
-                                            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"></div>
-                                                    <div class="col col-md-9"><label class=" form-control-label"><img src="{{URL:: asset('admin/assets/img/barcode.webp')}}" alt=""></label></div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col col-md-3"><label class=" form-control-label"></label></div>
-                                                    <div class="col-12 col-md-9">
-                                                        <p class="form-control-static"><input type="email" id="email-input" name="email-input" class="form-control"></p>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div> --}}
+                                  
                                 </div>
-                                <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
+                                {{-- <ul class="nav nav-tabs mt-4" id="myTab" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Chocolate Lines</a>
                                     </li>
                                     
-                                </ul>
-                                <div class="tab-content pl-3 p-1" id="myTabContent">
+                                </ul> --}}
+                                {{-- <div class="tab-content pl-3 p-1" id="myTabContent">
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -416,33 +239,34 @@
                                                             <tr>
                                                                 <th scope="col">No</th>
                                                                 <th scope="col">Machineno</th>
-                                                                <th scope="col">Startdate</th>
-                                                                <th scope="col">Starttime</th>
-                                                                <th scope="col">Image</th>
+                                                                <th scope="col">Enddate</th>
+                                                                <th scope="col">Endtime</th>
+                                                                <th scope="col">GrowingHour</th>
+                                                                <th scope="col">MachineImage</th>
 
 
                                                             </tr>
                                                         </thead>
-                                                        {{-- <?php $data=App\Models\chocolate::get(); ?> --}}
+                                                        <?php $data=App\Models\lots::get(); ?>
                                                         @foreach($data as $ans)
                                                         <tbody>
 
                                                             <tr>
                                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                                 <td>{{ $ans->machineno }}</td>
-                                                                <td>{{ $ans->startdate }}</td>
-                                                                <td>{{ $ans->starttime }}</td>
-                                                                <td><img src="{{url('item_img')}}/{{$ans->image}}"  ></td>
+                                                                <td>{{ $ans->enddate }}</td>
+                                                                <td>{{ $ans->endtime }}</td>
+                                                                <td>{{ $ans->growinghour }}</td>
+                                                                <td><img src="{{url('item_img')}}/{{$ans->machineimage}}"  hight="15px" width="100px"></td>
                                                             </tr>
                                                         </tbody>
                                                         @endforeach
                                                     </table>
-                                                   {{ $data->links() }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    {{-- <div class="tab-pane fade show" id="otherinfo" role="tabpanel" aria-labelledby="otherinfo-tab">
+                                    <div class="tab-pane fade show" id="otherinfo" role="tabpanel" aria-labelledby="otherinfo-tab">
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="card-body">
@@ -467,8 +291,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div> --}}
-                                </div>
+                                    </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -477,77 +301,7 @@
             </div>
         </div>
         <!-- /header -->
-        <!-- Header-->
-        {{-- <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-md-2"></div>
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>Send Message <span class="profilespan">Log Note</span></h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#"><i class="fa-solid fa-paperclip"></i> 0</a></li>
-                                    <li><a href="#">Follow</a></li>
-                                    <li class="active"><i class="fa-solid fa-user"></i> 1</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content">
-            <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <h6 class="headerborder">Today</h6>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-8 col-xs-6 col-sm-6">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <aside class="profile-nav alt">
-                                    <section class="card">
-                                        <div class="card-header user-header alt">
-                                            <div class="media">
-                                                <a href="#">
-                                                    <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{URL:: asset('admin/assets/images/admin.jpg')}}">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h2 class="text-dark display-6">Administrator</h2>
-                                                    <p>Creating a new Record....</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                </aside>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-
-
-                </div>
-
-            </div>
-
-        </div> --}}
-        <!-- /#right-panel -->
-
-        <!-- Right Panel -->
+    
 
         <!-- Scripts -->
        
@@ -565,7 +319,6 @@
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
         <script src="{{URL:: asset('admin/assets/js/main.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>

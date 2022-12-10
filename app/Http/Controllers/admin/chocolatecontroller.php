@@ -16,20 +16,23 @@ class chocolatecontroller extends Controller
         return view('admin.chocolatedashboard');
        }
        public function createchocolatedashboard(){
-        return view('admin.createchocolatedashboard');
+        $data=chocolate::paginate(5);
+        return view('admin.createchocolatedashboard')->with(['data'=>$data]);
        }
        public function insertchocolatedashboard(Request $request)
        {
            $chocolate = new chocolate;
-           $chocolate->machineno = $request->get('no');
+           $chocolate->machineno = $request->get('machinename');
            $chocolate->startdate = $request->get('sdate');
            $chocolate->starttime = $request->get('stime');
-           if ($request->hasFile('image')) {
-            $file = $request->file('image');
+
+           if ($request->hasFile('img')) {
+            $file = $request->file('img');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
             $file->move('item_img', $filename);
             $chocolate->image = $filename;
+         
         }
            $chocolate->save();
       
@@ -54,7 +57,7 @@ class chocolatecontroller extends Controller
        public function insertendgrowing(Request $request)
        {
            $growing = new lots;
-           $growing->machineno = $request->get('no');
+           $growing->machineno = $request->get('machinename');
            $growing->enddate = $request->get('edate');
            $growing->endtime = $request->get('etime');
            $growing->growinghour = $request->get('ghour');
@@ -71,7 +74,11 @@ class chocolatecontroller extends Controller
         return redirect('lots')->with(['message'=>'Insert Growing Sucessfull!']);
        }
        public function recivelot(){
-
         return view('admin.recivelot');
        }
+       public function lots(){
+        $data=lots::paginate(5);
+        return view('admin.lots')->with(['data'=>$data]);
+       }
+  
 }

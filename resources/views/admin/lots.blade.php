@@ -34,7 +34,8 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/paginate.css')}}">
 </head>
 
 <body>
@@ -176,10 +177,25 @@
                                             @endif
                                             <form action="{{ url('insertendgrowing') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                 {{ csrf_field() }}
-                                                <div class="row form-group">
+                                                {{-- <div class="row form-group">
                                                     <div class="col col-md-4"><label class=" form-control-label">Machine No : </label></div>
                                                     <div class="col-12 col-md-8">
                                                         <input type="number" id="email-input" name="no" placeholder="machineno" required class="form-control">
+                                                    </div>
+                                                </div> --}}
+                                                <div class="row form-group">
+                                                    <div class="col col-md-4"><label for="select" class=" form-control-label">Shape</label></div>
+                                                    <div class="col-12 col-md-8">
+                                                        <?php $shape=App\Models\machine::get();?>                                                                   
+                                                       
+                                                     
+                                                        <select class="custom-select d-block w-100" name="machinename" required>
+                                                            <option value="0">Please select</option>
+                                                            @foreach($shape as $ans)
+                                                            <option value="{{ $ans->name }}">{{ $ans->name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                      
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
@@ -203,8 +219,8 @@
                                                 <div class="row form-group">
                                                     <div class="col col-md-4"><label class=" form-control-label">Chocolate Image : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <input type="file" name="image" accept="image/*" capture>
-                                                       <h6>Take a Snapshort:- </h6> 
+                                                        
+                                                      
                                                         <input type="file"  name="img" accept="image/*" webcam>
                                                     </div>
                                                 </div>
@@ -239,7 +255,7 @@
 
                                                             </tr>
                                                         </thead>
-                                                        <?php $data=App\Models\lots::get(); ?>
+                                                        {{-- <?php $data=App\Models\lots::get(); ?> --}}
                                                         @foreach($data as $ans)
                                                         <tbody>
 
@@ -249,11 +265,12 @@
                                                                 <td>{{ $ans->enddate }}</td>
                                                                 <td>{{ $ans->endtime }}</td>
                                                                 <td>{{ $ans->growinghour }}</td>
-                                                                <td><img src="{{url('item_img')}}/{{$ans->machineimage}}"  hight="15px" width="100px"></td>
+                                                                <td><img src="{{url('image')}}/{{$ans->machineimage}}"  hight="15px" width="100px"></td>
                                                             </tr>
                                                         </tbody>
                                                         @endforeach
                                                     </table>
+                                                    {{ $data->links() }}
                                                 </div>
                                             </div>
                                         </div>

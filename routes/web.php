@@ -14,6 +14,7 @@ use App\Http\Controllers\admin\jobworkcontroller;
 use App\Http\Controllers\admin\settingcontroller;
 use App\Http\Controllers\admin\chocolatecontroller;
 use App\Http\Controllers\admin\machinecontroller;
+use App\Http\Controllers\admin\usercontroller;
 // use Illuminate\Support\Facades\Auth;
 
 /*
@@ -62,6 +63,16 @@ use App\Http\Controllers\admin\machinecontroller;
 route::get('/', [pakegecontroller::class, 'index']);
 route::post('insertlogin', [pakegecontroller::class, 'adminlogin']);
 route::get('logout', [pakegecontroller::class, 'logout']);
+// ******************************* user**************
+route::get('loginuser', [usercontroller::class, 'login']);
+route::post('userlogin', [usercontroller::class, 'userlogin']);
+
+Route::group(['middleware'=>'userside'],function()
+{
+    route::get('createuserchocolate', [usercontroller::class, 'createuserchocolate']);
+route::post('insertendgrowing', [usercontroller::class, 'insertendgrowing']);
+
+});
 
 Route::group(['middleware'=>'adminside'],function()
 {
@@ -118,7 +129,6 @@ route::get('laser', [homecontroller::class, 'laser']);
 route::get('jobwork1list', [homecontroller::class, 'jobwork1list']);
 route::get('lotsdashboardlist', [homecontroller::class, 'lotsdashboardlist']);
 route::get('lotsdashboard', [homecontroller::class, 'lotsdashboard']);
-route::get('lots', [homecontroller::class, 'lots']);
 route::get('locationlist', [homecontroller::class, 'locationlist']);
 route::get('machinelaser', [homecontroller::class, 'machinelaser']);
 route::get('machineequipmentslist', [homecontroller::class, 'machineequipmentslist']);
@@ -296,17 +306,19 @@ route::get('deletemachine/{id}', [machinecontroller::class, 'deletemachine']);
 // ******************************************chocolate*************************************************************
 route::get('chocolatedashboard', [chocolatecontroller::class, 'chocolatedashboard']);
 route::get('insertchocolate', [chocolatecontroller::class, 'insertchocolate']);
-route::get('createchocolatedashboard', [chocolatecontroller::class, 'createchocolatedashboard']);
 route::post('insertchocolatedashboard', [chocolatecontroller::class, 'insertchocolatedashboard']);
 // Route::post('upload', [chocolatecontroller::class, 'store']);
+route::get('createchocolatedashboard', [chocolatecontroller::class, 'createchocolatedashboard']);
 route::get('addchocolate', [chocolatecontroller::class, 'addchocolate']);
 route::get('recivelot', [chocolatecontroller::class, 'recivelot']);
 route::post('insertendgrowing', [chocolatecontroller::class, 'insertendgrowing']);
+route::get('lots', [chocolatecontroller::class, 'lots']);
+
 // ****************************************RoleandPermission**********************************************************
 Route::get('index', 'Backend\DashboardController@index')->name('admin.dashboard');
 Route::resource('roles', 'Backend\RolesController', ['names' => 'admin.roles']);
 Route::resource('users', 'Backend\UsersController', ['names' => 'admin.users']);
-// Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
+Route::resource('admins', 'Backend\AdminsController', ['names' => 'admin.admins']);
 
 // Login Routes
 Route::get('/login', 'Backend\Auth\LoginController@showLoginForm')->name('admin.login');

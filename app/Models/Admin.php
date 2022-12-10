@@ -75,4 +75,5 @@ class Admin extends Authenticatable
         }
         return $hasPermission;
     }
+    
 }

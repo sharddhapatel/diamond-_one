@@ -28,7 +28,7 @@ class batchcontroller extends Controller
            return redirect()->back()->with('message', 'Batch added successfully');
        }
     public function shape(){  
-       $page= shap::paginate(3);
+       $page= shap::paginate(5);
         return view('admin.shape')->with(['page'=>$page]);
        }
        public function insertshape(Request $request)

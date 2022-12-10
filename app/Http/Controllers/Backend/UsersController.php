@@ -33,6 +33,11 @@ class UsersController extends Controller
         $roles  = Role::all();
         return view('backend.pages.users.create', compact('roles'));
     }
+    // public function create()
+    // {
+    //     $roles  = Role::all();
+    //     return view('admin.', compact('roles'));
+    // }
 
     /**
      * Store a newly created resource in storage.

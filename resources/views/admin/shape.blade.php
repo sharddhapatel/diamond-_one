@@ -29,10 +29,12 @@
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/style.css')}}">
-    {{-- <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/theme0990.css')}}"> --}}
+    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/paginate.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/chosen/chosen.min.css')}}">
-    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
-    <link rel=”stylesheet” href=”https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css    ” />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     
 
 
@@ -545,7 +547,7 @@
                         <div class="card">
 
                             <div class="card-body">
-                                <table id=bootstrap-data-table  class="table table-striped table-bordered">
+                                <table   class="table table-striped table-bordered">
                                     {{-- <table id="example" class="display" style="width:100%"> --}}
                                     <thead>
                                         <tr>
@@ -572,14 +574,15 @@
                                       
                                     </tbody>
                                    
-                                   
+                                    
                                 </table>
-                            {{-- <div class="paginate" style="display: flex;">{{  $page->links()  }}</div> --}}
-                                
+                           
                             
                                
                                      
                             </div>
+                           <div class="paginate" style="display: flex;padding-left: 31px;padding-bottom: 20px;">{!! $page->links()  !!}</div>
+
                         </div>
                     </div>
 
@@ -596,8 +599,7 @@
         </script>
      
          <!-- Datatable plugin JS library file -->
-        <script type="text/javascript" src=
-   "https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+        <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
         </script>
         {{-- <script type=”text/javascript” src=”https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js”></script> --}}
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
