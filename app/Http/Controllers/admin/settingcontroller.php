@@ -22,6 +22,7 @@ class settingcontroller extends Controller
            $settinguser = new createsettinguser;
            $settinguser->name = $request->get('name');
            $settinguser->login = $request->get('login');
+           $settinguser->password = $request->get('password');
            $settinguser->language = $request->get('language');
         
            $settinguser->save();

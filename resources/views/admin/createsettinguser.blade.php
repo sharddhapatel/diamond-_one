@@ -188,9 +188,13 @@
                                             <div class="col-11">
                                                 <input type="text" placeholder="email" id="email-input" name="login" required class="form-control">
                                             </div><br>
+                                            <div class="col col-md-12 mt-2"><label class=" form-control-label">Password</label></div>
+                                            <div class="col-11">
+                                                <input type="text" placeholder="password" id="email-input" name="password" required class="form-control">
+                                            </div><br>
                                             <div class="row form-group">
                                                 <div class="col col-md-12 mt-2"><label class=" form-control-label">Language</label></div>
-                                                <div class="col col-md-8">
+                                                <div class="col-11">
                                                     <?php $data=App\Models\createlanguage::get();?>
                                                   
                                                     <select class="custom-select d-block w-100" name="language" required="">

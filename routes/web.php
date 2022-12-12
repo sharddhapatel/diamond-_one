@@ -66,11 +66,11 @@ route::get('logout', [pakegecontroller::class, 'logout']);
 // ******************************* user**************
 route::get('loginuser', [usercontroller::class, 'login']);
 route::post('userlogin', [usercontroller::class, 'userlogin']);
-
+route::get('userlogout', [usercontroller::class, 'userlogout']);
 Route::group(['middleware'=>'userside'],function()
 {
     route::get('createuserchocolate', [usercontroller::class, 'createuserchocolate']);
-route::post('insertendgrowing', [usercontroller::class, 'insertendgrowing']);
+route::post('insertendgrowinguser', [usercontroller::class, 'insertendgrowinguser']);
 
 });
 

@@ -10,6 +10,6 @@ class createsettinguser extends Model
     use HasFactory;
     public $table = 'createsettingusers';
     protected $fillable = [
-        'name','login','language'
+        'name','login','password','language'
     ];
 }

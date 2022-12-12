@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\chocolate;
 use App\Models\lots;
-use App\Models\webimage;
+
 use Illuminate\Support\Facades\Storage;
 class chocolatecontroller extends Controller
 {

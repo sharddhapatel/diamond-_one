@@ -166,9 +166,9 @@
                                         <li class="nav-item">
                                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">General Information</a>
                                         </li>
-                                        <li class="nav-item">
+                                        {{-- <li class="nav-item">
                                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#purchase" role="tab" aria-controls="profile" aria-selected="false">Default Galaxy Info</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                     <div class="tab-content pl-3 p-1" id="myTabContent">
                                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -188,17 +188,16 @@
                                                         @endif
                                                         <form action="{{ url('insertcompany') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                             {{ csrf_field() }}
-                                                                <div class="col col-md-12"><label class=" form-control-label">Company Name</label></div>
-                                                                <div class="col-11">
+                                                            <div class="row form-group">
+                                                                <div class="col col-md-4"><label class=" form-control-label">Company Name</label></div>
+                                                                <div class="col-12 col-md-8">
                                                                     <input type="text" placeholder="company name" id="email-input" name="name" class="form-control">
                                                                 </div>
-                                                         <br><br>
+                                                            </div>
                                                          <div class="row form-group">
-                                                            <div class="col col-md-4"></div>
-                                                            <div class="col-12 col-md-8">
-                                                                <div class="row">
-                                                               
-                                                                    <div class="col-lg-4">
+                                                
+                                                                    <div class="col col-md-4"><label class=" form-control-label">Stat :</label></div>
+                                                                    <div class="col-12 col-md-8">
                                                                         <?php $data=App\Models\stat::get();?>
                                                                         <select class="custom-select d-block w-100" id="state" name="stat" required="">
                                                                             @foreach($data as $key =>$ans)
@@ -206,16 +205,19 @@
                                                                        
                                                                             @endforeach
                                                                         </select>
-                                                                    </div>
-                                                                    <div class="col-lg-4">
+                                                                    </div><br>
+                                                                </div>
+                                                                <div class="row form-group">
+                                                                    <div class="col col-md-4"><label class=" form-control-label">Dist :</label></div>
+                                                                    <div class="col-12 col-md-8">
                                                                         <select class="form__input js-example-basic-single custom-select d-block w-100" name="dist" id="district" required="">
                                                                             <option selected="">Dist..</option>
                                                                          
                                                                         </select>
                                                                     </div>
                                            
-                                                                </div>
-                                                            </div>
+                                                              
+                                                         
                                                         </div>
                                                             <div class="row form-group">
                                                                 <div class="col col-md-4"><label class=" form-control-label">Address :
@@ -295,14 +297,14 @@
                                             </form>
                                             </div>
                                         </div>
-                                        <div class="tab-pane fade" id="purchase" role="tabpanel" aria-labelledby="profile-tab">
+                                        {{-- <div class="tab-pane fade" id="purchase" role="tabpanel" aria-labelledby="profile-tab">
                                             <h3>Menu 1</h3>
                                             <p>Some content here.</p>
                                         </div>
                                         <div class="tab-pane fade" id="accounting" role="tabpanel" aria-labelledby="contact-tab">
                                             <h3>Menu 2</h3>
                                             <p>Some content here.</p>
-                                        </div>
+                                        </div> --}}
 
                                     </div>
 

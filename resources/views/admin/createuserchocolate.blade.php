@@ -117,7 +117,7 @@
 
                             <a class="nav-link" href="#"><i class="fa fa-cog"></i>Settings</a>
 
-                            <a class="nav-link" href="{{ url('') }}"><i class="fa fa-power-off"></i>Logout</a>
+                            <a class="nav-link" href="{{ url('userlogout') }}"><i class="fa fa-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </div>
@@ -174,7 +174,7 @@
                                                 {!! session('error') !!}
                                             </div>
                                             @endif
-                                            <form action="{{ url('') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                            <form action="{{ url('insertendgrowinguser') }}" method="post" enctype="multipart/form-data" class="form-horizontal">
                                                 {{ csrf_field() }}
                                                 <div class="row form-group">
                                                     

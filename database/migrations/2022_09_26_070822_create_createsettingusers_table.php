@@ -17,6 +17,7 @@ class CreateCreatesettingusersTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('login')->nullable();
+            $table->string('password')->nullable();
             $table->string('language')->nullable();
             $table->timestamps();
         });
