@@ -20,8 +20,6 @@ class pakegecontroller extends Controller
        public function demo(){ 
         return view('admin.demo');
        }
-
-
        public function index(){
               return view('admin.index');
              }
@@ -50,13 +48,6 @@ class pakegecontroller extends Controller
              {
                  Session()->forget('user_id');
                  Session()->forget('studemail');
-         
                  return redirect('/');
-             }
-            
-            
-
-    
-
-
+             }    
 }

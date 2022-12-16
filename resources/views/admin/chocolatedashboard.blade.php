@@ -201,10 +201,11 @@
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size"></label></div>
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size float-right"></label></div>
                                                 </div> --}}
-                                                <div class="row form-group1">
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Batch:{{ $ans-> name}}</label></div>
-                                                    <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Total Weight(Ct):</label></div>
-                                                </div>
+                                                <span id="cd-days">00</span> Days 
+                                                <span id="cd-hours">00</span> Hours
+                                                <span id="cd-minutes">00</span> Minutes
+                                                <span id="cd-seconds">00</span> Seconds 
+                                            
                                                 {{-- <div class="row form-group1">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Pcs:</label></div>
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Weight(Ct):</label></div>
@@ -221,9 +222,9 @@
                                                     <div class="col col-md-6"> <button type="button" class="btn btn-secondary btn-sm float-left"> Growing Done </button></div>
                                                     <div class="col col-md-6"> <button type="button" class="btn btn-info btn-sm float-right"> In Progress </button></div>
                                                 </div> --}}
-                                                <div id="countdowntimer"><span id="future_date"><span></div>
+                                                {{-- <div id="countdowntimer"><span id="future_date"><span></div> --}}
                                               
-                                            <div id="time">
+                                            {{-- <div id="time">
                                                 <span class="digit" id="hr">
                                                   00</span>
                                                 <span class="txt">Hr</span>
@@ -243,16 +244,18 @@
                                                   Stop</button>
                                                 <button class="btn" id="reset">
                                                   Reset</button>
-                                            </div>
+                                            </div> --}}
+                                            
                                         {{-- </form> --}}
+                                       
                                         </div>
                                     </div>
                                     
                                 {{-- </a> --}}
                                 </div>
                                 @endforeach
-                               
-                             
+                              
+                      
                                 {{-- <div class="col-lg-3">
                                     <div class="card">
                                         <div class="card-body card-block">
@@ -319,8 +322,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
         <script src="script.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
-   <script type="text/javascript">
+   {{-- <script type="text/javascript">
 let startBtn = document.getElementById('start');
 let stopBtn = document.getElementById('stop');
 let resetBtn = document.getElementById('reset');
@@ -399,7 +403,7 @@ function stopWatch() {
         setTimeout(stopWatch, 10);
     }
 }
-</script>
+</script> --}}
 
         <script>
             jQuery(document).ready(function() {
@@ -415,52 +419,39 @@ function stopWatch() {
                 $('#bootstrap-data-table-export').DataTable();
             });
         </script>
-        {{-- <script>
-            (function () {
-  var canvas  = document.getElementById('stopwatch'),
-      ctx     = canvas.getContext('2d'),
-      digital = document.getElementById('time'),
-      reset   = document.getElementById('reset'), 
-      timerOn = false,
-      second  = 2 * Math.PI / 60,
-    // hours=2 *Math.PI /break,
-      start   = 1.5*Math.PI,
-      t = 0,
-      animation;
+       
+           
+       <script type="text/javascript">
+     let timer = function (date) {
+    let timer = Math.round(new Date(date).getTime()/1000) - Math.round(new Date().getTime()/1000);
+		let minutes, seconds;
+		setInterval(function () {
+            if (--timer < 0) {
+				timer = 0;
+			}
+			days = parseInt(timer / 60 / 60 / 24, 10);
+			hours = parseInt((timer / 60 / 60) % 24, 10);
+			minutes = parseInt((timer / 60) % 60, 10);
+			seconds = parseInt(timer % 60, 10);
 
-  var draw = function () {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.lineWidth = 30;
-    ctx.strokeStyle = '#3399cc';
-    ctx.beginPath();
-    ctx.arc(100, 100, 80,start, start + second * t);
-    ctx.stroke();
-    t = t >= 60 ? 0: t + 0.05; 
-  }
-  
-  canvas.addEventListener('click', function () {
-    if (!timerOn) {
-      timerOn = true;
-      animation = setInterval(function () {
-        draw();
-        digital.innerHTML = Math.floor(t);
-      }, 50);
-    }
-    else {
-      timerOn = false;
-      clearInterval(animation);
-    }
+			days = days < 10 ? "0" + days : days;
+			hours = hours < 10 ? "0" + hours : hours;
+			minutes = minutes < 10 ? "0" + minutes : minutes;
+			seconds = seconds < 10 ? "0" + seconds : seconds;
 
-  });
-  reset.addEventListener('click', function () {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    digital.innerHTML = 0;
-    timerOn = false;
-    clearInterval(animation);
-    t = 0;
-  });
-})();
-        </script> --}}
+			document.getElementById('cd-days').innerHTML = days;
+			document.getElementById('cd-hours').innerHTML = hours;
+			document.getElementById('cd-minutes').innerHTML = minutes;
+			document.getElementById('cd-seconds').innerHTML = seconds;
+		}, 1000);
+	}
+ 
+//using the function
+const today = new Date()
+const tomorrow = new Date(today)
+tomorrow.setDate(tomorrow.getDate() + 1)
+timer(tomorrow);
+        </script>
        
 </body>
 

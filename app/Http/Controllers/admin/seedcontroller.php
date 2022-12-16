@@ -31,7 +31,8 @@ class seedcontroller extends Controller
         $widthdivided=$sumlenth/$count;
         $samedata = DB::table('bactches')
         ->join('packets', 'packets.batch_id', '=', 'bactches.id')
-        
+
+
         ->get();
         return view('admin.seeds1')->with(['data'=>$data,'sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided,'samedata'=>$samedata]);
        }
