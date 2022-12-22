@@ -40,9 +40,9 @@
     box-sizing: border-box;
     /* height: 30px; */
 }
-img, svg {
+ svg {
     /* vertical-align: middle; */
-    height: 5px;
+    height: 5px !important; 
 }
 html {
     font-family: sans-serif;
@@ -186,7 +186,7 @@ figure {
 img {
     vertical-align: middle;
     border-style: none;
-    height: 75px;
+    /* height: 75px; */
 }
 svg {
     overflow: hidden;

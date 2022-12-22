@@ -386,7 +386,7 @@
                                         @endforeach
                           
                                     </tbody>
-                                    <tr>
+                                    <tr class="bg-dark text-white">
                                         <td><b>Total</b></td>
                                         <td> </td>
                                         <td><b>{{ round($divided ,3) }}</b></td>

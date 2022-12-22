@@ -578,10 +578,10 @@
                                 </table>
                            
                             
-                               
+                                <div class="paginate" style="display: flex;padding-bottom: 20px;">{!! $page->links()  !!}</div>
                                      
                             </div>
-                           <div class="paginate" style="display: flex;padding-left: 31px;padding-bottom: 20px;">{!! $page->links()  !!}</div>
+                           
 
                         </div>
                     </div>
