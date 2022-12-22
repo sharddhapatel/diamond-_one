@@ -18,7 +18,7 @@ class seedcontroller extends Controller
         $data=DB::table('bactches')->get();
         $sum=DB::table('packets')->sum('weight');
         $sumdivided=DB::table('packets')->sum('height');
- 
+        // $page= packet::paginate(10);
         $count = DB::table('packets')->count();
         if($count == 0){
             $count = 1;
@@ -31,9 +31,7 @@ class seedcontroller extends Controller
         $widthdivided=$sumlenth/$count;
         $samedata = DB::table('bactches')
         ->join('packets', 'packets.batch_id', '=', 'bactches.id')
-
-
-        ->get();
+        ->paginate(10);
         return view('admin.seeds1')->with(['data'=>$data,'sum'=>$sum,'divided'=>$divided,'lenthdivided'=>$lenthdivided,'widthdivided'=>$widthdivided,'samedata'=>$samedata]);
        }
     //    public function insertseeds(Request $request)
@@ -75,7 +73,6 @@ class seedcontroller extends Controller
                 'length' => $length[$i],
                 'width' => $width[$i],
                 'weight' => $weight[$i],
-
             ];
 
             $students[] = $data;
@@ -94,8 +91,7 @@ class seedcontroller extends Controller
         //     'length' => json_encode(request('length')),
         //     'width' => json_encode(request('width')),
         //     'weight' => json_encode(request('weight')),
-        //     ]);
-    
+        //     ]); 
     return redirect('seeds1')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
    }
        public function seedslist(){

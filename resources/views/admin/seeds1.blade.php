@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/paginate.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/chosen/chosen.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
@@ -213,7 +214,7 @@
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
                                                             @endforeach
                                                         </select>
-                                                      
+                                            
                                                     </div>
                                                 </div>
                                             {{-- </form> --}}
@@ -339,11 +340,18 @@
                                 <a href=""><button type="button" class="btn btn-outline-secondary mt-1"> Split/Merge Lot </button></a>
                             </div> --}}
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                <table  class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> Name</th>
+                                       
+                                                <th>
+                                                <fieldset class="question">
+                                                    {{-- <label for="coupon_question">Name</label> --}}
+                                                    <input class="coupon_question" type="checkbox" id="checkAll" name="coupon_question" value="1" />
+                                                    <span class="item-text">Name</span>
+                                                </fieldset>
+                                            </th>
                                             <th>Height(Micron)</th>
                                             <th>Length(MM)</th>
                                             <th>Width(MM)</th>
@@ -355,11 +363,17 @@
                
                                         
                                         @foreach ($samedata as $ans)
-                                        <tr>
+                                        <tr >
                                             <td>{{ $loop->iteration }}</td>
-                                            <td> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">{{$ans->name}} </label>
-                                            </td>
+                                           
+                                         
+                                            <td>
+                                            <fieldset class="question">
+                                                {{-- <label for="coupon_question">Name</label> --}}
+                                                <input class="coupon_question" type="checkbox" id="checkAll" name="coupon_question" value="1" />
+                                                <span class="item-text">{{$ans->name}}</span>
+                                            </fieldset>
+                                        </td>
                                             <td>{{$ans->height}}</td>
                                             <td>{{$ans->length}}</td>
                                             <td> {{$ans->width}}</td>
@@ -381,7 +395,15 @@
                                         <td><b>{{  round($sum,3) }}</b></td>
                                         <td><b></b></td>
                                     </tr>
+                                  
+                                    <fieldset class="answer">
+                                        <label for="coupon_field">Print:</label>
+                                        {{-- <input type="text" name="coupon_field" id="coupon_field"/> --}}
+                                        <button type="button" name="print_packet_label" title="Print Label" context="{'print_from_batch': True}" class="btn btn-link o_icon_button"><i class="fa fa-fw o_button_icon fa-print"></i></button>
+                                    </fieldset>
+                                   
                                 </table>
+                                <div class="paginate" style="display: flex;padding-left: 31px;padding-bottom: 20px;">{!! $samedata->links()  !!}</div>
                             </div>
                         </div>
                     </div>
@@ -418,7 +440,16 @@
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
+        <script>
+           $(".answer").hide();
+$(".coupon_question").click(function() {
+    if($(this).is(":checked")) {
+        $(".answer").show(300);
+    } else {
+        $(".answer").hide(200);
+    }
+});
+        </script>
         <script>
             jQuery(document).ready(function() {
                 jQuery(".standardSelect ").chosen({
@@ -429,30 +460,21 @@
             });
         </script>
         <script type="text/javascript">
-            $(document).ready(function() {
-                $('#bootstrap-data-table-export').DataTable();
-            });
-        </script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-        </script>
-        <script>
-        $(document).ready(function(){
-           $("#experienceNo").on("change",function(){
-           var numInputs = $(this).val();
-           $('#experienceSection').html('');
-           
-           for(var i=0; i < numInputs; i++)
-           {
-               var j = i*1+1;
-               var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Height(Micron)</label><input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Length(MM)</label><input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Width(MM)</label><input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Weight(Ct)</label><input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
-               $('#experienceSection').append($section);
-           }
-         });
-       });
+         $('input[type=checkbox]').each(function () {
+    var sThisVal = (this.checked ? $(this).val() : "");
+});
+      </script>
+      <script>
+    $(function () {
+  $('#checkAll').on('click', function () {
+    $(document).find(':checkbox').prop('checked', this.checked);
+  });
+});
+$(function () {
+  $(".checkall").click(function () {
+    $(this).closest('fieldset').find(':checkbox').prop('checked', this.checked);
+  });
+});
       </script>
 </body>
 

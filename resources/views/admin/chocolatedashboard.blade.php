@@ -201,11 +201,17 @@
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size"></label></div>
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size float-right"></label></div>
                                                 </div> --}}
-                                                <span id="cd-days">00</span> Days 
-                                                <span id="cd-hours">00</span> Hours
-                                                <span id="cd-minutes">00</span> Minutes
-                                                <span id="cd-seconds">00</span> Seconds 
-                                            
+                                                {{-- {{-timer-}} --}}
+                                                {{-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+                                                <div class="timer"></div> --}}
+                                                <div>Hour: <span id="hour"></span></div>
+                                                <div>Minute: <span id="minute"></span></div>
+                                                <div>Second: <span id="seconds"></span></div>
+                                                
+                                                <button id="start-btn">Start</button>
+                                                <button id="stop-btn">Stop</button>
+                                                <button id="reset-btn">Reset</button>
+
                                                 {{-- <div class="row form-group1">
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Pcs:</label></div>
                                                     <div class="col col-md-6"><label for="hf-email" class=" form-control-label font_size">Avg Weight(Ct):</label></div>
@@ -324,6 +330,47 @@
         <script src="script.js"></script>
         <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
 
+
+<script>
+  window.onload = () => {
+  let hour = 0;
+  let minute = 0;
+  let seconds = 0;
+  let totalSeconds = 0;
+  
+  let intervalId = null;
+  
+  function startTimer() {
+    ++totalSeconds;
+    hour = Math.floor(totalSeconds /3600);
+    minute = Math.floor((totalSeconds - hour*3600)/60);
+    seconds = totalSeconds - (hour*3600 + minute*60);
+
+    document.getElementById("hour").innerHTML =hour;
+    document.getElementById("minute").innerHTML =minute;
+    document.getElementById("seconds").innerHTML =seconds;
+  }
+
+  document.getElementById('start-btn').addEventListener('click', () => {
+    intervalId = setInterval(startTimer, 1000);
+  })
+  
+  document.getElementById('stop-btn').addEventListener('click', () => {
+    if (intervalId)
+      clearInterval(intervalId);
+  });
+  
+   
+  document.getElementById('reset-btn').addEventListener('click', () => {
+     totalSeconds = 0;
+     document.getElementById("hour").innerHTML = '0';
+     document.getElementById("minute").innerHTML = '0';
+     document.getElementById("seconds").innerHTML = '0';
+  });
+}
+</script>
+
+
    {{-- <script type="text/javascript">
 let startBtn = document.getElementById('start');
 let stopBtn = document.getElementById('stop');
@@ -421,38 +468,103 @@ function stopWatch() {
         </script>
        
            
-       <script type="text/javascript">
-     let timer = function (date) {
-    let timer = Math.round(new Date(date).getTime()/1000) - Math.round(new Date().getTime()/1000);
-		let minutes, seconds;
-		setInterval(function () {
-            if (--timer < 0) {
-				timer = 0;
-			}
-			days = parseInt(timer / 60 / 60 / 24, 10);
-			hours = parseInt((timer / 60 / 60) % 24, 10);
-			minutes = parseInt((timer / 60) % 60, 10);
-			seconds = parseInt(timer % 60, 10);
+       {{-- <script type="text/javascript">
+class Timer {
+  constructor(root) {
+    root.innerHTML = Timer.getHTML();
 
-			days = days < 10 ? "0" + days : days;
-			hours = hours < 10 ? "0" + hours : hours;
-			minutes = minutes < 10 ? "0" + minutes : minutes;
-			seconds = seconds < 10 ? "0" + seconds : seconds;
+    this.el = {
+      minutes: root.querySelector(".timer__part--minutes"),
+      seconds: root.querySelector(".timer__part--seconds"),
+      control: root.querySelector(".timer__btn--control"),
+      reset: root.querySelector(".timer__btn--reset")
+    };
 
-			document.getElementById('cd-days').innerHTML = days;
-			document.getElementById('cd-hours').innerHTML = hours;
-			document.getElementById('cd-minutes').innerHTML = minutes;
-			document.getElementById('cd-seconds').innerHTML = seconds;
-		}, 1000);
-	}
- 
-//using the function
-const today = new Date()
-const tomorrow = new Date(today)
-tomorrow.setDate(tomorrow.getDate() + 1)
-timer(tomorrow);
+    this.interval = null;
+    this.remainingSeconds = 0;
+
+    this.el.control.addEventListener("click", () => {
+      if (this.interval === null) {
+        this.start();
+      } else {
+        this.stop();
+      }
+    });
+
+    this.el.reset.addEventListener("click", () => {
+      const inputMinutes = prompt("Enter number of minutes:");
+
+      if (inputMinutes < 60) {
+        this.stop();
+        this.remainingSeconds = inputMinutes * 60;
+        this.updateInterfaceTime();
+      }
+    });
+  }
+
+  updateInterfaceTime() {
+    const minutes = Math.floor(this.remainingSeconds / 60);
+    const seconds = this.remainingSeconds % 60;
+
+    this.el.minutes.textContent = minutes.toString().padStart(2, "0");
+    this.el.seconds.textContent = seconds.toString().padStart(2, "0");
+  }
+
+  updateInterfaceControls() {
+    if (this.interval === null) {
+      this.el.control.innerHTML = `<span class="material-icons">play_arrow</span>`;
+      this.el.control.classList.add("timer__btn--start");
+      this.el.control.classList.remove("timer__btn--stop");
+    } else {
+      this.el.control.innerHTML = `<span class="material-icons">pause</span>`;
+      this.el.control.classList.add("timer__btn--stop");
+      this.el.control.classList.remove("timer__btn--start");
+    }
+  }
+
+  start() {
+    if (this.remainingSeconds === 0) return;
+
+    this.interval = setInterval(() => {
+      this.remainingSeconds--;
+      this.updateInterfaceTime();
+
+      if (this.remainingSeconds === 0) {
+        this.stop();
+      }
+    }, 1000);
+
+    this.updateInterfaceControls();
+  }
+
+  stop() {
+    clearInterval(this.interval);
+
+    this.interval = null;
+
+    this.updateInterfaceControls();
+  }
+
+  static getHTML() {
+    return `
+			<span class="timer__part timer__part--minutes">00</span>
+			<span class="timer__part">:</span>
+			<span class="timer__part timer__part--seconds">00</span>
+			<button type="button" class="timer__btn timer__btn--control timer__btn--start">
+				<span class="material-icons">play_arrow</span>
+			</button>
+			<button type="button" class="timer__btn timer__btn--reset">
+				<span class="material-icons">timer</span>
+			</button>
+		`;
+  }
+}
+
+new Timer(
+	document.querySelector(".timer")
+);
         </script>
-       
+        --}}
 </body>
 
 <!-- Mirrored from technext.github.io/elaadmin/forms-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Aug 2022 04:21:40 GMT -->

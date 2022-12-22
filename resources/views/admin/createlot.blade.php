@@ -180,7 +180,6 @@
                                                             <option value="0">Please select</option>
                                                             @foreach($data as $ans)
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
-                                                       
                                                             @endforeach
                                                         </select>
                                                     </div>
