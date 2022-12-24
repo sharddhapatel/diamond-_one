@@ -523,7 +523,7 @@
                                     <section class="card">
                                         <div class="card-header user-header alt">
                                             <div class="media">
-                                                <a href="#">
+                                                <a href="#"> 
                                                     <img class="align-self-center rounded-circle mr-3" style="width:85px; height:85px;" alt="" src="{{URL:: asset('admin/assets/images/admin.jpg')}}">
                                                 </a>
                                                 <div class="media-body">
@@ -565,13 +565,10 @@
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.print.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/lib/data-table/buttons.colVis.min.js')}}"></script>
         <script src="{{URL:: asset('admin/assets/js/init/datatables-init.js')}}"></script>
-
         <script src="{{URL:: asset('admin/assets/js/main.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/chosen.jquery.min.js')}} "></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-
-
         <script>
             jQuery(document).ready(function() {
                 jQuery(".standardSelect ").chosen({
