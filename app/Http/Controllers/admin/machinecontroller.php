@@ -16,6 +16,7 @@ class machinecontroller extends Controller
            $machine = new machine;
            $machine->name = $request->get('name');
            $machine->growthrate = $request->get('rate');
+          
            $machine->save();
       
         return redirect('createmachine')->with(['message'=>'Insert Machine Sucessfull!']);
@@ -24,5 +25,20 @@ class machinecontroller extends Controller
     {
         $data = DB::table('machine')->where('id', $id)->delete();
         return redirect()->back()->with('message', 'delete succesfully');
+    }
+    // public function changeStatus(Request $request)
+    // {
+    //     $user = machine::find($request->user_id);
+    //     $user->status = $request->status;
+    //     $user->save();
+    //     return response()->json(['success'=>'Status change successfully.']);
+    // }
+    public function updateStatus(Request $request)
+    {
+        $user = machine::findOrFail($request->user_id);
+        $user->status = $request->status;
+        $user->save();
+        
+        return response()->json(['message' => 'User status updated successfully.']);
     }
 }

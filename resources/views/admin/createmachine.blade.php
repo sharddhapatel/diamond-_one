@@ -34,7 +34,14 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script> --}}
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/switchery/0.8.2/switchery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 
 <body>
@@ -219,8 +226,9 @@
                                                                 <th scope="col">No</th>
                                                                 <th scope="col">Name</th>
                                                                 <th scope="col">GrowthRate</th>
-                                                                
+                                                               
                                                                 <th scope="col">Delete</th>
+                                                                <th scope="col">Active</th>
 
                                                             </tr>
                                                         </thead>
@@ -231,14 +239,21 @@
                                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                                 <td>{{ $ans->name }}</td>
                                                                 <td>{{ $ans->growthrate }} %</td>
+                                                                {{-- <td> <a href="#" class="btn btn-danger">Inactive</a></td> --}}
                                                                 <td> <button type="submit" class="btn btn-success btn-sm float-center">
                                                                     <a href="{{url('deletemachine')}}/{{$ans->id}}">Delete</a></button></td>
-                                                                
-                                                            </tr>
+                                                                {{-- <td><input data-id="{{$ans->user_id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ $ans->status ? 'checked' : '' }}></td> --}}
+                                                            {{-- <td>{{ $ans->status }}</td> --}}
+                                                            <td><input type="checkbox" data-id="{{ $ans->id }}" name="status" class="js-switch" {{ $ans->status == 1 ? 'checked' : '' }}></td>
 @endforeach
                                                         </tbody>
                                                         
                                                     </table>
+                                                    <script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+                                                        elems.forEach(function(html) {
+                                                            let switchery = new Switchery(html,  { size: 'small' });
+                                                        });</script>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,6 +354,23 @@
         <!-- Right Panel -->
 
         <!-- Scripts -->
+        <script>
+            $(document).ready(function(){
+        $('.js-switch').change(function () {
+            let status = $(this).prop('checked') === true ? 1 : 0;
+            let userId = $(this).data('id');
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: '{{ route('users.update.status') }}',
+                data: {'status': status, 'user_id': userId},
+                success: function (data) {
+                    console.log(data.message);
+                }
+            });
+        });
+    });
+              </script>
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js ')}}"></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/bootstrap.min.js ')}}"></script>
@@ -355,6 +387,27 @@
                 });
             });
         </script>
+        {{-- <script>
+            $(function() {
+              $('.toggle-class').change(function() {
+                  var status = $(this).prop('checked') == true ? 1 : 0; 
+                  var user_id = $(this).data('id'); 
+                   
+                  $.ajax({
+                      type: "GET",
+                      dataType: "json",
+                      url: '/changeStatus',
+                      data: {'status': status, 'user_id': user_id},
+                      success: function(data){
+                        console.log(data.success)
+                      }
+                  });
+              })
+            });
+          </script> --}}
+         
+        
+            
 
 </body>
 

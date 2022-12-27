@@ -301,6 +301,8 @@ route::post('insertjangad', [jobworkcontroller::class, 'insertjangad']);
 route::get('createmachine', [machinecontroller::class, 'createmachine']);
 route::post('insertmachine', [machinecontroller::class, 'insertmachine']);
 route::get('deletemachine/{id}', [machinecontroller::class, 'deletemachine']);
+// Route::get('changeStatus', [machinecontroller::class, 'changeStatus']);
+Route::get('/status/update',  [machinecontroller::class, 'updateStatus'])->name('users.update.status');
 
 
 // ******************************************chocolate*************************************************************

@@ -184,7 +184,7 @@
                                                     </div>
                                                 </div> --}}
                                                 <div class="row form-group">
-                                                    <div class="col col-md-4"><label for="select" class=" form-control-label">Shape</label></div>
+                                                    <div class="col col-md-4"><label for="select" class=" form-control-label">Machine no</label></div>
                                                     <div class="col-12 col-md-8">
                                                         <?php $shape=App\Models\machine::get();?>                                                                   
                                                        

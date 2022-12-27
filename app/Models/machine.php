@@ -10,6 +10,6 @@ class machine extends Model
     use HasFactory;
     public $table = 'machine';
     protected $fillable = [
-        'name','growthrate'
+        'name','growthrate','status'
     ];
 }

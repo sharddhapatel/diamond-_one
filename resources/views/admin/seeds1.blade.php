@@ -29,13 +29,12 @@
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/cdn/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/paginate.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/chosen/chosen.min.css')}}">
     <link rel="stylesheet" href="{{URL:: asset('admin/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-     
+
     <style>
         .navbar-nav li:hover>ul.dropdown-menu {
             display: block;
@@ -214,7 +213,7 @@
                                                             <option value="{{ $ans->name }}">{{ $ans->name }}</option>
                                                             @endforeach
                                                         </select>
-                                            
+                                                      
                                                     </div>
                                                 </div>
                                             {{-- </form> --}}
@@ -385,7 +384,7 @@
                                             <td>{{$ans->weight}}
                                                 {{-- <i class="fa-solid fa-receipt"></i> --}}
                                             </td>
-                                            <td> <button type="button" name="print_packet_label" title="Print Label" context="{'print_from_batch': True}" class="btn btn-link o_icon_button"><i class="fa fa-fw o_button_icon fa-print"></i></button></td>
+                                            <td> <a href="{{ url('/seeds1') }}" class="btnprn btn"><i class="fa fa-fw o_button_icon fa-print"></i></a></center></td>
                                         </tr>
                                         @endforeach
                           
@@ -393,7 +392,7 @@
                                     <tr class="bg-dark text-white">
                                         <td><b>Total</b></td>
                                         <td> </td>
-                                        <td><b>{{ round($divided ,3) }}</b></td>
+                                        <td><b>{{  round($divided ,3) }}</b></td>
                                         <td><b>{{  round($lenthdivided,3) }}</b></td>
                                         <td><b>{{  round($widthdivided,3) }}</b></td>
                                         <td><b>{{  round($sum,3) }}</b></td>
@@ -416,49 +415,15 @@
                 </div>
             </div>
         </div>
-       
-          {{-- <div class="col-md-6  groupContainer">
-            <div class="row mb-3 ">
-             
-             
-                <div class="custom-control custom-checkbox  custom-control-right">
-                  <input id="selectall_group2" type="checkbox" class="custom-control-input" />
-                  <label for="selectall_group2" class="custom-control-label">
-                                              Select All
-                                              </label>
-                </div>
-              </div>
 
-            <div class="row">
-                <div class="custom-control custom-checkbox  custom-control-right">
-                  <input id="content12" name="permission_id[]" type="checkbox" class="custom-control-input" />
-                  <label for="content12" class="custom-control-label mr-auto"></label>
-                </div>
-              
-            
-            </div>
-          </div> --}}
-          
 
         <!-- Right Panel -->
 
         <!-- Scripts -->
-<script>
-  document.addEventListener("click",function(e) {
-  const tgt = e.target;
-  if (tgt.type && tgt.type==="checkbox" && tgt.id.startsWith("selectall")) {
-    const checked = tgt.checked; 
-    const parent = tgt.closest(".groupContainer");
-    const checks = parent.querySelectorAll("input[type=checkbox][id^=content]");
-    [...checks].forEach(chk => {
-      if (!chk.disabled) chk.checked = checked;
-    })
-  }
-  
-})
-    </script> 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
   </script>
         <script src="{{URL:: asset('admin/assets/cdn/js/jquery.min.js')}} "></script>
         <script src="{{URL:: asset('admin/assets/cdn/js/popper.min.js')}}"></script>
@@ -479,22 +444,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
         <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 
-           <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-           <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous">
-     </script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
-     </script>
-             <script>
-           $(".answer").hide();
-$(".coupon_question").click(function() {
-    if($(this).is(":checked")) {
-        $(".answer").show(300);
-    } else {
-        $(".answer").hide(200);
-    }
-});
-        </script>
         <script>
             jQuery(document).ready(function() {
                 jQuery(".standardSelect ").chosen({
@@ -505,38 +454,55 @@ $(".coupon_question").click(function() {
             });
         </script>
         <script type="text/javascript">
-         $('input[type=checkbox]').each(function () {
-    var sThisVal = (this.checked ? $(this).val() : "");
-});
+            $(document).ready(function() {
+                $('#bootstrap-data-table-export').DataTable();
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous">
+        </script>
+        <script>
+        $(document).ready(function(){
+           $("#experienceNo").on("change",function(){
+           var numInputs = $(this).val();
+           $('#experienceSection').html('');
+           
+           for(var i=0; i < numInputs; i++)
+           {
+               var j = i*1+1;
+               var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Height(Micron)</label><input id="cc-payment" name="height[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Length(MM)</label><input id="cc-payment" name="length[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Width(MM)</label><input id="cc-payment" name="width[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">('+j+') Weight(Ct)</label><input id="cc-payment" name="weight[]" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
+               $('#experienceSection').append($section);
+           }
+         });
+       });
       </script>
-     <script>
-     $(document).ready(function(){
-        $("#experienceNo").on("change",function(){
-        var numInputs = $(this).val();
-        $('#experienceSection').html('');
-        for(var i=0; i < numInputs; i++)
-        {
-            var j = i*1;
-            var $section =  $('<div class="form-group row"><div class="col-lg-12"><div class="card-body"><div class="row"><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Height(Micron)'+j+'</label><input id="cc-payment" name="height" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Length(MM)'+j+'</label><input id="cc-payment" name="length" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Width(MM)'+j+'</label><input id="cc-payment" name="width" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div><div class="col-md-3"><div class="form-group1"><label for="cc-payment" class="control-label mb-1">Weight(Ct)'+j+'</label><input id="cc-payment" name="weight" type="text" required class="form-control" aria-required="true" aria-invalid="false" value="00.00"></div></div></div></div></div></div>');
-            $('#experienceSection').append($section);
+      <script>
+        document.addEventListener("click",function(e) {
+        const tgt = e.target;
+        if (tgt.type && tgt.type==="checkbox" && tgt.id.startsWith("selectall")) {
+          const checked = tgt.checked; 
+          const parent = tgt.closest(".groupContainer");
+          const checks = parent.querySelectorAll("input[type=checkbox][id^=content]");
+          [...checks].forEach(chk => {
+            if (!chk.disabled) chk.checked = checked;
+          })
         }
-      });
-    });
-   </script>
-   <script>
-    document.addEventListener("click",function(e) {
-  const tgt = e.target;
-  if (tgt.type && tgt.type==="checkbox" && tgt.id.startsWith("selectall")) {
-    const checked = tgt.checked; 
-    const parent = tgt.closest(".groupContainer");
-    const checks = parent.querySelectorAll("input[type=checkbox][id^=content]");
-    [...checks].forEach(chk => {
-      if (!chk.disabled) chk.checked = checked;
-    })
-  }
-  
-})
-   </script>
+        
+      })
+          </script> 
+              <script>
+                $(".answer").hide();
+     $(".coupon_question").click(function() {
+         if($(this).is(":checked")) {
+             $(".answer").show(300);
+         } else {
+             $(".answer").hide(200);
+         }
+     });
+             </script>
 </body>
 
 <!-- Mirrored from technext.github.io/elaadmin/forms-advanced.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 15 Aug 2022 04:21:40 GMT -->

@@ -47,6 +47,7 @@ class seedcontroller extends Controller
     //        $seeds1->save();      
     //     return redirect('seeds1')->with('message', json_encode(['success'=>'Seeds sucessfull!']));
     //    }
+    
     public function insertseeds(Request $request)
     {
         $batch= $request->input('batch_id');
@@ -57,10 +58,10 @@ class seedcontroller extends Controller
         $length = $request->input('length');
         $width = $request->input('width');
         $weight = $request->input('weight');
-        
+ 
         // number of rows submitted (use a required value)
         $n = count($height);
-
+     
         // track valid student records
         $students = [];
 

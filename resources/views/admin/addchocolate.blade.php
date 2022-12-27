@@ -324,7 +324,7 @@
                                                 <div class="row form-group">
                                                     <div class="col col-md-4"><label class=" form-control-label">Machine No : </label></div>
                                                     <div class="col-12 col-md-8">
-                                                        <input type="number" id="email-input" name="no" placeholder="machineno" required class="form-control">
+                                                        <input type="text" id="email-input" name="no" placeholder="machineno" required class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="row form-group">
